@@ -37,7 +37,7 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark transition-colors;
+    @apply inline-flex items-center justify-center rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-black transition-colors;
   }
 
   .btn-secondary {
@@ -45,7 +45,7 @@
   }
 
   .card {
-    @apply rounded-2xl border border-border bg-surface p-6;
+    @apply rounded-2xl border border-border bg-surface p-6 shadow-[0_1px_0_rgba(15,17,21,0.02)];
   }
 
   .eyebrow {
@@ -53,14 +53,17 @@
   }
 
   .prose-legal h2 {
-    @apply mt-10 mb-3 text-xl font-semibold text-text-primary;
+    @apply mt-12 mb-3 text-xl font-semibold text-text-primary;
   }
 
   .prose-legal h3 {
     @apply mt-6 mb-2 text-base font-semibold text-text-primary;
   }
 
-  .prose-legal p,
+  .prose-legal p {
+    @apply text-text-secondary leading-relaxed my-3;
+  }
+
   .prose-legal li {
     @apply text-text-secondary leading-relaxed;
   }
@@ -69,7 +72,15 @@
     @apply list-disc pl-5 space-y-1.5 my-3;
   }
 
+  .prose-legal ol {
+    @apply list-decimal pl-5 space-y-1.5 my-3;
+  }
+
   .prose-legal a {
     @apply text-primary hover:text-primary-dark underline underline-offset-2;
+  }
+
+  .prose-legal strong {
+    @apply text-text-primary font-semibold;
   }
 }

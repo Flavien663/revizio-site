@@ -3,7 +3,7 @@ export const site = {
   name: "Revizio",
   domain: "revizioapp.com",
   url: "https://revizioapp.com",
-  supportEmail: "SUPPORT_EMAIL",
+  supportEmail: "revizio.help@outlook.fr",
   privacyEmail: "PRIVACY_EMAIL",
   legalEntity: "LEGAL_ENTITY_NAME",
   legalAddress: "LEGAL_ADDRESS",

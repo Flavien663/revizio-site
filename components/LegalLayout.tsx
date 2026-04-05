@@ -10,7 +10,7 @@ type Props = {
 export function LegalLayout({ title, intro, children }: Props) {
   return (
     <article className="container-x py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-prose">
         <p className="eyebrow mb-3">Revizio</p>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
         {intro && <p className="mt-4 text-text-secondary">{intro}</p>}

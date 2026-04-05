@@ -5,42 +5,47 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Aide, FAQ et contact du support Revizio : abonnements, restauration d’achats, authentification, suppression de compte.",
+    "Support Revizio : contact, FAQ et liens utiles pour abonnements, restauration d’achats, authentification et suppression de compte.",
 };
 
 const faqs = [
   {
     q: "Comment restaurer mes achats ?",
-    a: "Depuis l’app, ouvre l’écran d’abonnement et utilise « Restaurer les achats ». Si le problème persiste, contacte-nous par email.",
+    a: "Ouvrez l’application, accédez aux paramètres ou au paywall, puis utilisez l’option « Restaurer les achats ». Si le problème persiste, contactez le support avec l’adresse Apple utilisée pour l’achat.",
   },
   {
-    q: "J’ai un problème avec mon abonnement",
-    a: "Vérifie d’abord l’état de l’abonnement dans les réglages Apple ou Google. Si l’achat n’est pas reconnu dans l’app, essaie « Restaurer les achats » puis contacte le support si nécessaire.",
+    q: "Comment gérer ou résilier mon abonnement ?",
+    a: "Les abonnements souscrits via Apple se gèrent depuis les réglages du compte Apple de l’utilisateur.",
   },
   {
-    q: "Je n’arrive pas à me connecter avec Apple / Google",
-    a: "Assure-toi d’utiliser le même compte qu’à l’inscription. Un redémarrage de l’app peut aider. Si le problème continue, contacte-nous.",
+    q: "Un pack de cerveaux donne-t-il accès à Premium ou Max ?",
+    a: "Non. Les packs de cerveaux sont des recharges de consommation uniquement.",
   },
   {
     q: "Comment supprimer mon compte ?",
-    a: "La suppression peut être initiée depuis l’app. Voir la page Suppression de compte pour les détails.",
+    a: "La suppression doit être initiée depuis l’application, dans les paramètres du compte. La page /delete-account explique le fonctionnement général.",
   },
   {
-    q: "Une génération IA est très longue, que faire ?",
-    a: "Tu peux quitter l’écran pendant la génération. Une notification intra-app t’informe à la fin du traitement.",
+    q: "Je n’arrive pas à me connecter avec Apple ou Google.",
+    a: "Vérifiez le compte utilisé, relancez l’application, puis contactez le support si nécessaire.",
+  },
+  {
+    q: "Les contenus générés par IA sont-ils toujours exacts ?",
+    a: "Non. Ils doivent être relus et vérifiés.",
   },
 ];
 
 export default function SupportPage() {
   return (
     <div className="container-x py-16 sm:py-20">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-prose">
         <p className="eyebrow mb-3">Support</p>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Besoin d’aide ?
+          Support Revizio
         </h1>
         <p className="mt-4 text-text-secondary">
-          L’équipe support répond aux demandes par email. Réponse sous quelques jours ouvrés.
+          Nous faisons le nécessaire pour vous aider rapidement sur les sujets liés au compte,
+          aux abonnements, à l’utilisation de l’app et à la suppression de compte.
         </p>
 
         <div className="mt-8 rounded-2xl border border-border bg-surface p-6">
@@ -54,6 +59,9 @@ export default function SupportPage() {
             >
               {site.supportEmail}
             </a>
+            <p className="mt-2 text-xs text-text-secondary">
+              Délai indicatif de réponse : sous [X] jours ouvrés.
+            </p>
           </div>
         </div>
 
@@ -75,14 +83,16 @@ export default function SupportPage() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          <Link href="/delete-account" className="card hover:border-text-secondary transition-colors">
-            <h3 className="text-base font-semibold">Suppression de compte</h3>
-            <p className="mt-2 text-sm text-text-secondary">Procédure et informations utiles.</p>
-          </Link>
+        <h2 className="mt-12 text-xl font-semibold">Liens utiles</h2>
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
           <Link href="/privacy" className="card hover:border-text-secondary transition-colors">
-            <h3 className="text-base font-semibold">Confidentialité</h3>
-            <p className="mt-2 text-sm text-text-secondary">Comment les données sont traitées.</p>
+            <h3 className="text-sm font-semibold">Politique de confidentialité</h3>
+          </Link>
+          <Link href="/terms" className="card hover:border-text-secondary transition-colors">
+            <h3 className="text-sm font-semibold">Conditions d’utilisation</h3>
+          </Link>
+          <Link href="/delete-account" className="card hover:border-text-secondary transition-colors">
+            <h3 className="text-sm font-semibold">Suppression de compte</h3>
           </Link>
         </div>
       </div>

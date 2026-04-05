@@ -14,23 +14,22 @@ export function Footer() {
               <Image
                 src={logo}
                 alt=""
-                width={24}
-                height={24}
-                className="h-6 w-6 rounded-md object-contain"
+                width={28}
+                height={28}
+                className="h-7 w-7 rounded-md object-contain"
               />
               <span>{site.name}</span>
             </div>
             <p className="mt-3 text-sm text-text-secondary">
-              Application mobile de révision. Structurer ses cours, planifier son travail, avancer sérieusement.
+              Application mobile de révision. Organiser ses matières, planifier ses sessions, avancer sereinement.
             </p>
           </div>
           <nav className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm sm:grid-cols-3">
             <Link className="text-text-secondary hover:text-text-primary" href="/">Accueil</Link>
             <Link className="text-text-secondary hover:text-text-primary" href="/support">Support</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/privacy">Confidentialité</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/terms">Conditions</Link>
+            <Link className="text-text-secondary hover:text-text-primary" href="/privacy">Politique de confidentialité</Link>
+            <Link className="text-text-secondary hover:text-text-primary" href="/terms">Conditions d’utilisation</Link>
             <Link className="text-text-secondary hover:text-text-primary" href="/delete-account">Suppression de compte</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/subscriptions">Abonnements</Link>
           </nav>
         </div>
         <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-text-secondary sm:flex-row sm:items-center sm:justify-between">
@@ -38,7 +37,10 @@ export function Footer() {
             © {year} {site.legalEntity} — Tous droits réservés.
           </p>
           <p>
-            Support : <a className="hover:text-text-primary" href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
+            Support :{" "}
+            <a className="hover:text-text-primary" href={`mailto:${site.supportEmail}`}>
+              {site.supportEmail}
+            </a>
           </p>
         </div>
       </div>

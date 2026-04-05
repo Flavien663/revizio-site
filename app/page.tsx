@@ -1,104 +1,103 @@
 import Image from "next/image";
+import Link from "next/link";
 import { StoreButtons } from "@/components/StoreButtons";
 import { site } from "@/lib/site";
-import heroScan from "@/public/images/feature-scan.png";
+import heroScan from "@/public/images/feature-scan.webp";
 import heroFiche from "@/public/images/feature-fiche.png";
 import heroQuiz from "@/public/images/feature-quiz.webp";
+import heroMascotRewards from "@/public/images/hero-mascot-rewards.webp";
 import featureExam from "@/public/images/feature-exam.png";
 import featureNotif from "@/public/images/feature-notif.png";
 import onboarding from "@/public/images/onboarding.webp";
 
-const valueProps = [
-  {
-    title: "Une révision structurée",
-    body: "Cours, chapitres, sessions : un cadre clair pour travailler sans s’éparpiller.",
-  },
-  {
-    title: "Une progression visible",
-    body: "Historique, streaks et cerveaux pour voir concrètement ce qui avance.",
-  },
-  {
-    title: "Des outils IA utiles",
-    body: "Scan de cours, quiz, fiches : des assistants pensés pour la révision, pas des gadgets.",
-  },
-  {
-    title: "Motivation sans infantilisation",
-    body: "Une gamification sobre qui aide à tenir le rythme, sans virer en jeu.",
-  },
-];
-
 const steps = [
-  { n: "01", title: "Crée tes cours", body: "Ajoute tes matières et tes chapitres en quelques secondes." },
-  { n: "02", title: "Organise tes sessions", body: "Planifie ton travail selon ton rythme et tes priorités." },
-  { n: "03", title: "Révise avec les outils", body: "Scan, quiz, fiches : lance l’outil adapté à l’étape." },
-  { n: "04", title: "Suis ta progression", body: "Historique et archive pour garder le fil et la motivation." },
+  {
+    n: "01",
+    title: "Organise tes matières et chapitres",
+    body: "Ajoute tes matières, découpe tes chapitres et pose une base claire pour ton travail.",
+  },
+  {
+    n: "02",
+    title: "Planifie tes sessions",
+    body: "Transforme tes objectifs en sessions de révision concrètes et plus faciles à suivre.",
+  },
+  {
+    n: "03",
+    title: "Révise avec les bons outils",
+    body: "Utilise quiz, fiches et autres outils disponibles selon ton niveau d’accès.",
+  },
+  {
+    n: "04",
+    title: "Garde le rythme",
+    body: "Suis ton historique, ton avancement et ta régularité dans une interface claire.",
+  },
 ];
 
-const tools = [
+const features = [
   {
-    name: "Scan de cours",
-    body: "Prends ton cours en photo, l’IA structure la matière en contenu exploitable.",
-    image: heroScan,
-    badge: null,
+    title: "Planning de révision",
+    body: "Construis un rythme de travail lisible et cohérent.",
   },
   {
-    name: "Quiz",
-    body: "Des quiz générés à partir de tes chapitres pour tester tes connaissances.",
-    image: heroQuiz,
-    badge: "Premium",
+    title: "Matières, chapitres et sessions",
+    body: "Découpe ta charge de travail étape par étape.",
   },
   {
-    name: "Fiches intelligentes",
-    body: "Des fiches de révision synthétiques construites sur tes propres contenus.",
-    image: heroFiche,
-    badge: "Premium",
+    title: "Quiz et fiches assistés par IA",
+    body: "Gagne du temps pour créer des supports de révision.",
   },
   {
-    name: "Examens blancs",
-    body: "Des examens blancs pour se préparer dans des conditions proches du réel.",
-    image: featureExam,
-    badge: "Max",
+    title: "Historique et archive",
+    body: "Retrouve ce que tu as déjà travaillé.",
   },
   {
-    name: "Notifications intelligentes",
-    body: "Des rappels calés sur ton planning pour ne plus rien laisser tomber.",
-    image: featureNotif,
-    badge: "Max",
+    title: "Progression et motivation",
+    body: "Reste engagé grâce à une expérience moderne et structurée.",
+  },
+  {
+    title: "Outils avancés selon l’offre",
+    body: "Accède à davantage d’outils avec Premium ou Max.",
   },
 ];
 
 const plans = [
   {
     name: "Free",
-    description: "Démarrer et tester.",
+    description: "Découverte de l’expérience Revizio.",
     items: [
-      "2 cours, 5 chapitres max / cours",
-      "Sessions illimitées",
-      "Scan de cours inclus",
-      "Cerveaux gagnés via onboarding, cours et streaks",
+      "Scan inclus",
+      "Fonctionnalités de base",
+      "Découverte de l’expérience Revizio",
     ],
   },
   {
     name: "Premium",
-    description: "Le cadre complet.",
+    description: "Expérience de révision enrichie.",
     highlighted: true,
     items: [
-      "Cours et chapitres illimités",
-      "50 cerveaux / mois",
-      "Scan, quiz, fiches, pendu, bingo",
+      "Quiz IA",
+      "Fiches IA",
+      "Expérience de révision enrichie",
     ],
   },
   {
     name: "Max",
-    description: "Pour la préparation d’examens.",
+    description: "Accès plus complet pour préparer des examens.",
     items: [
       "Tout Premium",
-      "150 cerveaux / mois",
-      "Examens blancs, mots croisés",
+      "Examens blancs",
+      "Mots croisés",
       "Notifications intelligentes",
-      "Planning optimisé",
     ],
   },
+];
+
+const transparency = [
+  "Pas de promesse de résultat scolaire garanti.",
+  "Abonnements et achats intégrés présentés clairement.",
+  "Liens vers confidentialité, conditions et support.",
+  "Possibilité de restaurer les achats dans l’application.",
+  "Possibilité de supprimer son compte depuis l’application.",
 ];
 
 export default function Home() {
@@ -108,22 +107,27 @@ export default function Home() {
       <section className="relative overflow-hidden border-b border-border">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(242,107,58,0.14),transparent_55%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(242,107,58,0.08),transparent_60%)]"
         />
         <div className="container-x relative pt-16 pb-20 sm:pt-24 sm:pb-28">
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-5">Application mobile de révision</p>
             <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-              Révise mieux.
+              Révise avec une méthode
               <br />
-              <span className="text-primary">Sans t’éparpiller.</span>
+              <span className="text-primary">plus claire.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-text-secondary sm:text-xl">
-              Revizio structure tes cours, planifie tes sessions et te donne les outils IA qu’il te faut pour avancer sérieusement.
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-text-secondary sm:text-xl">
+              Revizio t’aide à organiser tes matières, planifier tes sessions, créer des quiz et des fiches avec l’aide de l’IA, et suivre ta progression sans te disperser.
             </p>
             <div className="mt-9 flex flex-col items-center gap-4">
               <StoreButtons size="lg" />
-              <p className="text-xs text-text-secondary">iOS et Android · Sans publicité</p>
+              <Link
+                href="#how"
+                className="text-sm font-medium text-text-secondary underline-offset-4 hover:text-text-primary hover:underline"
+              >
+                En savoir plus
+              </Link>
             </div>
           </div>
 
@@ -131,7 +135,7 @@ export default function Home() {
           <div className="mx-auto mt-16 max-w-5xl">
             <div className="grid grid-cols-3 items-end gap-3 sm:gap-6">
               <div className="translate-y-6 opacity-90 sm:translate-y-10">
-                <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xl shadow-black/40">
+                <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xl shadow-black/10">
                   <Image
                     src={heroFiche}
                     alt="Fiche de révision générée dans Revizio"
@@ -142,10 +146,10 @@ export default function Home() {
                 </div>
               </div>
               <div className="-translate-y-2 sm:-translate-y-4">
-                <div className="overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/50 ring-1 ring-primary/25">
+                <div className="overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/15 ring-1 ring-primary/20">
                   <Image
-                    src={heroScan}
-                    alt="Scan d’un cours dans Revizio"
+                    src={heroMascotRewards}
+                    alt="Récompenses de cerveaux gagnées dans Revizio"
                     sizes="(max-width: 640px) 36vw, 360px"
                     className="h-auto w-full"
                     priority
@@ -154,7 +158,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="translate-y-6 opacity-90 sm:translate-y-10">
-                <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xl shadow-black/40">
+                <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-xl shadow-black/10">
                   <Image
                     src={heroQuiz}
                     alt="Quiz de révision dans Revizio"
@@ -169,36 +173,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== VALUE PROPS ============== */}
-      <section className="py-20 sm:py-24">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow mb-3">Pourquoi Revizio</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Mieux que l’éparpillement.
-            </h2>
-            <p className="mt-4 text-text-secondary">
-              Une app qui remet du cadre sans devenir rigide, et qui te donne les bons outils au bon moment.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {valueProps.map((v) => (
-              <div key={v.title} className="card">
-                <h3 className="text-base font-semibold">{v.title}</h3>
-                <p className="mt-2 text-sm text-text-secondary">{v.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============== HOW IT WORKS ============== */}
-      <section className="border-y border-border bg-surface/30 py-20 sm:py-24">
+      <section id="how" className="py-20 sm:py-24">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Comment ça marche</p>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Quatre étapes, pas plus.
+              Une révision structurée,
+              <br className="hidden sm:block" />
+              {" "}du chapitre à la progression.
             </h2>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -213,118 +196,81 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============== TOOLS PREVIEW ============== */}
-      <section className="py-20 sm:py-28">
+      {/* ============== FEATURES ============== */}
+      <section className="border-y border-border bg-surface/50 py-20 sm:py-24">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow mb-3">Outils</p>
+            <p className="eyebrow mb-3">Fonctionnalités</p>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Des outils pensés pour la révision.
+              Pensé pour réviser avec plus de clarté.
             </h2>
-            <p className="mt-4 text-text-secondary">
-              Pas de gadget. Chaque outil a un rôle clair dans ton parcours de travail.
-            </p>
           </div>
-
-          {/* Tool hero : scan */}
-          <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">
-            <div>
-              <span className="inline-block rounded-full bg-primary/15 px-2.5 py-1 text-xs font-medium text-primary">
-                Scan de cours
-              </span>
-              <h3 className="mt-4 text-2xl font-semibold tracking-tight sm:text-3xl">
-                Transforme un cours pris en photo en contenu structuré.
-              </h3>
-              <p className="mt-3 text-text-secondary">
-                Photographie tes notes ou ton manuel. L’IA extrait l’essentiel et le structure en matière exploitable directement dans Revizio.
-              </p>
-              <ul className="mt-5 space-y-2 text-sm text-text-secondary">
-                <li className="flex items-start gap-2">
-                  <span aria-hidden className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  Disponible dès le plan Free
-                </li>
-                <li className="flex items-start gap-2">
-                  <span aria-hidden className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  Vrai cas d’usage image, pas une démo
-                </li>
-              </ul>
-            </div>
-            <div className="order-first lg:order-last">
-              <div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40">
-                <Image
-                  src={heroScan}
-                  alt="Écran de scan de cours dans Revizio"
-                  sizes="(max-width: 1024px) 80vw, 400px"
-                  className="h-auto w-full"
-                  placeholder="blur"
-                />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map((f) => (
+              <div key={f.title} className="card">
+                <h3 className="text-base font-semibold">{f.title}</h3>
+                <p className="mt-2 text-sm text-text-secondary">{f.body}</p>
               </div>
-            </div>
+            ))}
           </div>
 
-          {/* Tools grid */}
-          <div className="mt-20 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {tools.slice(1).map((t) => (
-              <div key={t.name} className="card flex flex-col">
-                <div className="mb-5 overflow-hidden rounded-xl border border-border bg-background">
+          {/* Screens preview */}
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { src: heroScan, alt: "Écran Scan de cours dans Revizio", label: "Scan" },
+              { src: heroQuiz, alt: "Écran Quiz dans Revizio", label: "Quiz" },
+              { src: featureExam, alt: "Écran Examens blancs dans Revizio", label: "Examens blancs" },
+              { src: featureNotif, alt: "Écran Notifications intelligentes dans Revizio", label: "Notifications" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center">
+                <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-lg shadow-black/10">
                   <Image
-                    src={t.image}
-                    alt={`Écran ${t.name} dans Revizio`}
+                    src={s.src}
+                    alt={s.alt}
                     sizes="(max-width: 640px) 90vw, 260px"
                     className="h-auto w-full"
                     placeholder="blur"
                   />
                 </div>
-                <div className="flex items-center gap-2">
-                  <h3 className="text-base font-semibold">{t.name}</h3>
-                  {t.badge && (
-                    <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
-                      {t.badge}
-                    </span>
-                  )}
-                </div>
-                <p className="mt-2 text-sm text-text-secondary">{t.body}</p>
+                <p className="mt-3 text-xs font-medium uppercase tracking-wider text-text-secondary">
+                  {s.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ============== IA BLOCK ============== */}
+      <section className="py-20 sm:py-24">
+        <div className="container-x">
+          <div className="mx-auto max-w-prose rounded-2xl border border-border bg-surface p-8 sm:p-10">
+            <p className="eyebrow mb-3">Intelligence artificielle</p>
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              Une aide à la révision, pas une promesse magique.
+            </h2>
+            <p className="mt-4 text-text-secondary">
+              Les fonctionnalités assistées par IA de Revizio sont conçues pour aider à préparer des supports de révision plus rapidement. Les contenus générés doivent être relus et vérifiés par l’utilisateur.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ============== PRODUCT PROOF ============== */}
-      <section className="border-t border-border bg-surface/30 py-20 sm:py-28">
+      <section className="border-t border-border bg-surface/50 py-20 sm:py-24">
         <div className="container-x">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="eyebrow mb-3">Une app pensée sérieusement</p>
+              <p className="eyebrow mb-3">Expérience produit</p>
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                Onboarding, planning, historique.
-                <br />
-                Tout est conçu pour avancer.
+                Une app pensée pour aider à avancer.
               </h2>
               <p className="mt-4 text-text-secondary">
-                Revizio n’est pas une app gadget. Chaque écran est pensé pour aider à se poser, planifier et revenir à ce qu’on a déjà fait.
+                Onboarding clair, planning lisible, historique retrouvable. Chaque écran est là pour aider à se poser, planifier et revenir à ce qu’on a déjà travaillé.
               </p>
-              <ul className="mt-6 space-y-3 text-sm text-text-secondary">
-                <li className="flex gap-3">
-                  <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span><strong className="text-text-primary">Onboarding clair</strong> — tu cadres ton projet dès les premières minutes.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span><strong className="text-text-primary">Planning</strong> — tes cours et sessions dans un cadre lisible.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span><strong className="text-text-primary">Historique & archive</strong> — retrouver ce qui a été fait, reprendre le fil.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span aria-hidden className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                  <span><strong className="text-text-primary">IA intégrée comme outil</strong> — pas comme promesse magique.</span>
-                </li>
-              </ul>
             </div>
             <div>
-              <div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/40">
+              <div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-border bg-surface shadow-2xl shadow-black/15">
                 <Image
                   src={onboarding}
                   alt="Écran d’onboarding de Revizio"
@@ -339,15 +285,15 @@ export default function Home() {
       </section>
 
       {/* ============== PLANS ============== */}
-      <section id="plans" className="py-20 sm:py-28">
+      <section id="plans" className="py-20 sm:py-24">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Offres</p>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Free, Premium, Max.
+              Choisis l’accès qui correspond à ton usage.
             </h2>
             <p className="mt-4 text-text-secondary">
-              Les prix des abonnements sont affichés dans l’app au moment de l’achat.
+              Revizio propose une version Free ainsi que des accès Premium et Max via abonnement. Certaines fonctionnalités nécessitent un abonnement actif.
             </p>
           </div>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -379,46 +325,63 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Distinction abo / packs */}
+          {/* Cerveaux */}
           <div className="mt-10 rounded-2xl border border-border bg-surface p-6 sm:p-8">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div>
-                <div className="text-xs font-medium uppercase tracking-wider text-primary">Abonnement = accès</div>
-                <p className="mt-2 text-sm text-text-secondary">
-                  Un abonnement donne accès à des fonctionnalités et à un quota mensuel de cerveaux (50 pour Premium, 150 pour Max).
-                </p>
-              </div>
-              <div>
-                <div className="text-xs font-medium uppercase tracking-wider text-primary">Pack = recharge</div>
-                <p className="mt-2 text-sm text-text-secondary">
-                  Un pack de cerveaux recharge uniquement la consommation ou du contenu jouable. <strong className="text-text-primary">Un pack ne débloque jamais un abonnement Premium ou Max.</strong>
-                </p>
-                <ul className="mt-4 grid grid-cols-2 gap-2 text-xs text-text-secondary">
-                  <li className="rounded-lg border border-border px-3 py-2">50 — 2,99 €</li>
-                  <li className="rounded-lg border border-border px-3 py-2">125 — 5,99 €</li>
-                  <li className="rounded-lg border border-border px-3 py-2">334 — 12,99 €</li>
-                  <li className="rounded-lg border border-border px-3 py-2">670 — 19,99 €</li>
-                </ul>
-              </div>
-            </div>
+            <p className="eyebrow mb-3">À propos des cerveaux</p>
+            <p className="text-text-secondary">
+              Les cerveaux correspondent à une consommation dans l’application. Les packs de cerveaux sont des recharges de consommation uniquement. Ils ne débloquent jamais l’accès Premium ou Max.
+            </p>
           </div>
         </div>
       </section>
 
+      {/* ============== TRANSPARENCE ============== */}
+      <section className="border-t border-border bg-surface/50 py-20 sm:py-24">
+        <div className="container-x">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow mb-3">Transparence</p>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Une expérience claire et transparente.
+            </h2>
+          </div>
+          <ul className="mx-auto mt-10 max-w-2xl space-y-3">
+            {transparency.map((t) => (
+              <li key={t} className="flex items-start gap-3 rounded-xl border border-border bg-surface px-5 py-4 text-sm text-text-secondary">
+                <span aria-hidden className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ============== DOWNLOAD CTA ============== */}
-      <section id="download" className="border-t border-border bg-gradient-to-b from-surface/40 to-background py-20 sm:py-28">
+      <section id="download" className="py-20 sm:py-28">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">Télécharger</p>
             <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-              Reprends le contrôle de tes révisions.
+              Commence à réviser plus clairement.
             </h2>
             <p className="mt-4 text-text-secondary">
-              Disponible sur iOS et Android. Gratuit pour commencer, Premium et Max pour aller plus loin.
+              Disponible sur iOS et Android.
             </p>
             <div className="mt-8 flex justify-center">
               <StoreButtons size="lg" />
             </div>
+            <p className="mt-6 text-xs text-text-secondary">
+              Besoin d’aide ?{" "}
+              <Link href="/support" className="text-primary underline-offset-2 hover:underline">
+                Contacter le support
+              </Link>{" "}
+              ·{" "}
+              <a
+                href={`mailto:${site.supportEmail}`}
+                className="text-primary underline-offset-2 hover:underline"
+              >
+                {site.supportEmail}
+              </a>
+            </p>
           </div>
         </div>
       </section>
