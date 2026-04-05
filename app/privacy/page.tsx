@@ -24,11 +24,11 @@ export default function PrivacyPage() {
       <h2>2. Responsable du traitement</h2>
       <ul>
         <li><strong>Nom légal :</strong> {site.legalEntity}</li>
-        <li><strong>Forme sociale :</strong> [À COMPLÉTER]</li>
+        <li><strong>Forme sociale :</strong> {site.legalForm}</li>
         <li><strong>Adresse :</strong> {site.legalAddress}</li>
         <li><strong>Email privacy :</strong> {site.privacyEmail}</li>
         <li><strong>Email support :</strong> {site.supportEmail}</li>
-        <li><strong>Pays d’établissement :</strong> [À COMPLÉTER]</li>
+        <li><strong>Pays d’établissement :</strong> {site.legalCountry}</li>
       </ul>
 
       <h2>3. Données susceptibles d’être collectées</h2>

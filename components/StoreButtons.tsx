@@ -20,7 +20,7 @@ export function StoreButtons({ size = "md", layout = "row" }: Props) {
       <a
         href={site.appStoreUrl}
         aria-label="Télécharger Revizio sur l’App Store"
-        className={`${base} ${dimensions} bg-ink text-white hover:bg-black`}
+        className={`${base} ${dimensions} bg-white text-black hover:bg-neutral-200`}
       >
         <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" aria-hidden fill="currentColor">
           <path d="M16.365 1.43c0 1.14-.43 2.23-1.2 3.03-.83.86-2.2 1.52-3.3 1.43-.13-1.12.42-2.29 1.18-3.06.84-.87 2.27-1.52 3.32-1.4ZM20.5 17.27c-.5 1.16-.74 1.68-1.4 2.7-.92 1.42-2.22 3.19-3.84 3.2-1.44.02-1.81-.94-3.77-.93-1.96.01-2.36.95-3.8.93-1.62-.02-2.85-1.62-3.77-3.04C1.3 16.2.44 11 2.32 7.48c1.34-2.49 3.45-4.07 5.43-4.07 1.77 0 2.88 1 4.34 1 1.42 0 2.29-.99 4.33-.99 1.54 0 3.18.84 4.34 2.29-3.82 2.09-3.2 7.55.14 8.56-.35.98-.74 1.93-1.4 3.0Z" />

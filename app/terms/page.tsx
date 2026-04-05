@@ -23,11 +23,11 @@ export default function TermsPage() {
       <h2>2. Éditeur</h2>
       <ul>
         <li><strong>Nom légal :</strong> {site.legalEntity}</li>
-        <li><strong>Forme sociale :</strong> [À COMPLÉTER]</li>
+        <li><strong>Forme sociale :</strong> {site.legalForm}</li>
         <li><strong>Adresse :</strong> {site.legalAddress}</li>
         <li><strong>Email support :</strong> {site.supportEmail}</li>
         <li><strong>Email légal :</strong> {site.privacyEmail}</li>
-        <li><strong>Pays :</strong> [À COMPLÉTER]</li>
+        <li><strong>Pays :</strong> {site.legalCountry}</li>
       </ul>
 
       <h2>3. Acceptation</h2>

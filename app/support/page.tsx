@@ -60,7 +60,7 @@ export default function SupportPage() {
               {site.supportEmail}
             </a>
             <p className="mt-2 text-xs text-text-secondary">
-              Délai indicatif de réponse : sous [X] jours ouvrés.
+              Délai indicatif de réponse : {site.supportDelay}.
             </p>
           </div>
         </div>
