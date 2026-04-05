@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background rounded;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark transition-colors;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold text-text-primary hover:border-text-secondary transition-colors;
+  }
+
+  .card {
+    @apply rounded-2xl border border-border bg-surface p-6;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.14em] text-primary;
+  }
+
+  .prose-legal h2 {
+    @apply mt-10 mb-3 text-xl font-semibold text-text-primary;
+  }
+
+  .prose-legal h3 {
+    @apply mt-6 mb-2 text-base font-semibold text-text-primary;
+  }
+
+  .prose-legal p,
+  .prose-legal li {
+    @apply text-text-secondary leading-relaxed;
+  }
+
+  .prose-legal ul {
+    @apply list-disc pl-5 space-y-1.5 my-3;
+  }
+
+  .prose-legal a {
+    @apply text-primary hover:text-primary-dark underline underline-offset-2;
+  }
+}
