@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Support",
   description:
-    "Support Revizio : contact, FAQ et liens utiles pour abonnements, restauration d’achats, authentification et suppression de compte.",
+    "Support Revizio : contact par email, FAQ (restauration d’achats, abonnements, authentification Apple/Google, suppression de compte) et liens utiles.",
+  alternates: { canonical: "/support" },
+  robots: { index: true, follow: true },
 };
 
 const faqs = [
@@ -35,9 +38,28 @@ const faqs = [
   },
 ];
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
+
 export default function SupportPage() {
   return (
     <div className="container-x py-16 sm:py-20">
+      <Script
+        id="ld-faq"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
       <div className="mx-auto max-w-prose">
         <p className="eyebrow mb-3">Support</p>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">

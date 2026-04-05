@@ -4,7 +4,9 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Suppression de compte",
   description:
-    "Comment supprimer son compte Revizio : procédure dans l’application, informations conservées, contact en cas de blocage.",
+    "Comment supprimer son compte Revizio depuis l’application : procédure pas à pas, données concernées, contact support en cas de blocage.",
+  alternates: { canonical: "/delete-account" },
+  robots: { index: true, follow: true },
 };
 
 export default function DeleteAccountPage() {

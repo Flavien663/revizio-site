@@ -5,7 +5,9 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Politique de confidentialité",
   description:
-    "Politique de confidentialité de Revizio : données collectées, finalités, droits des utilisateurs, durées de conservation.",
+    "Politique de confidentialité de Revizio : données collectées, finalités du traitement, sous-traitants, droits des utilisateurs, durées de conservation.",
+  alternates: { canonical: "/privacy" },
+  robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {

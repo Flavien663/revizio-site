@@ -5,7 +5,9 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Conditions d’utilisation",
   description:
-    "Conditions d’utilisation de Revizio : accès, comptes, offres Free/Premium/Max, abonnements, packs de cerveaux, IA, responsabilité.",
+    "Conditions d’utilisation de Revizio : accès au service, comptes utilisateurs, offres Free/Premium/Max, abonnements, packs de cerveaux, IA, paiement, responsabilité.",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
 };
 
 export default function TermsPage() {

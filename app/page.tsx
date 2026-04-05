@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { StoreButtons } from "@/components/StoreButtons";
 import { site } from "@/lib/site";
 import heroScan from "@/public/images/feature-scan.webp";
@@ -92,17 +94,57 @@ const plans = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: `${site.name} — ${site.tagline}`,
+  description: site.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+    url: site.url,
+  },
+};
+
+const mobileAppLd = {
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  name: site.name,
+  operatingSystem: "iOS, Android",
+  applicationCategory: "EducationApplication",
+  description: site.description,
+  inLanguage: site.language,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: site.legalEntity,
+    url: site.url,
+  },
+  url: site.url,
+  image: `${site.url}/opengraph-image`,
+};
+
 const transparency = [
-  "Pas de promesse de résultat scolaire garanti.",
-  "Abonnements et achats intégrés présentés clairement.",
-  "Liens vers confidentialité, conditions et support.",
-  "Possibilité de restaurer les achats dans l’application.",
-  "Possibilité de supprimer son compte depuis l’application.",
+  "Abonnements et achats présentés clairement avant tout paiement.",
+  "Restauration des achats disponible directement dans l’application.",
+  "Suppression de compte accessible depuis les paramètres.",
+  "Confidentialité, conditions et support à un clic.",
+  "Une communication claire sur ce que Revizio t’apporte.",
 ];
 
 export default function Home() {
   return (
     <>
+      <Script
+        id="ld-mobileapp"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(mobileAppLd) }}
+      />
       {/* ============== HERO ============== */}
       <section className="relative overflow-hidden border-b border-border">
         <div
@@ -247,10 +289,10 @@ export default function Home() {
           <div className="mx-auto max-w-prose rounded-2xl border border-border bg-surface p-8 sm:p-10">
             <p className="eyebrow mb-3">Intelligence artificielle</p>
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              Une aide à la révision, pas une promesse magique.
+              L’IA au service de ta révision.
             </h2>
             <p className="mt-4 text-text-secondary">
-              Les fonctionnalités assistées par IA de Revizio sont conçues pour aider à préparer des supports de révision plus rapidement. Les contenus générés doivent être relus et vérifiés par l’utilisateur.
+              Transforme tes cours en quiz, fiches et supports exploitables en quelques secondes. Revizio met l’IA au service de ton temps, pour que tu puisses te concentrer sur ce qui compte vraiment : réviser efficacement.
             </p>
           </div>
         </div>
