@@ -395,7 +395,7 @@ export default function Home() {
                     alt={t.alt}
                     sizes="(max-width: 640px) 45vw, 260px"
                     className={`h-full w-full object-cover ${
-                      t.name === "Pendu" ? "scale-[0.7]" : ""
+                      t.name === "Pendu" ? "scale-[0.8]" : ""
                     }`}
                     placeholder={typeof t.image === "string" ? undefined : "blur"}
                   />

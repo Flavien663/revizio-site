@@ -1,7 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
 import { site } from "@/lib/site";
-import logo from "@/public/images/logo.webp";
 
 const navItems = [
   { href: "/outils", label: "Outils" },
@@ -16,18 +14,10 @@ export function Header() {
       <div className="container-x flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2 font-semibold tracking-tight text-ink"
+          className="text-lg font-semibold tracking-tight text-ink"
           aria-label={`${site.name} — Accueil`}
         >
-          <Image
-            src={logo}
-            alt=""
-            width={32}
-            height={32}
-            className="h-8 w-8 rounded-xl object-contain"
-            priority
-          />
-          <span className="text-lg">{site.name}</span>
+          {site.name}
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
           {navItems.map((item) => (

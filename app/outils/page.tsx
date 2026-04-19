@@ -249,7 +249,7 @@ export default function OutilsPage() {
                         alt={t.alt}
                         sizes="(max-width: 1024px) 80vw, 460px"
                         className={`h-auto w-full ${
-                          t.slug === "pendu" ? "scale-[0.7]" : ""
+                          t.slug === "pendu" ? "scale-[0.8]" : ""
                         }`}
                         placeholder="blur"
                       />
