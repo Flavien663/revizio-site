@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npx next:*)"
+      "Bash(npx next:*)",
+      "Bash(cp \"C:/Users/Flavien/Downloads/website-revizio/visuals/New folder/fonctionnalite_bingo.webp\" \"C:/Users/Flavien/Downloads/website-revizio/public/images/feature-bingo.webp\")",
+      "Bash(cp \"C:/Users/Flavien/Downloads/website-revizio/visuals/New folder/fonctionnalite_crossword.png\" \"C:/Users/Flavien/Downloads/website-revizio/public/images/feature-crossword.png\")",
+      "Bash(cp \"C:/Users/Flavien/Downloads/website-revizio/visuals/New folder/fonctionnalite_pendu.png\" \"C:/Users/Flavien/Downloads/website-revizio/public/images/feature-hangman.png\")",
+      "Bash(cp \"C:/Users/Flavien/Downloads/website-revizio/visuals/New folder/fonctionnalite_fiche_revision.png\" \"C:/Users/Flavien/Downloads/website-revizio/public/images/feature-memo-structured.png\")",
+      "Bash(cp \"C:/Users/Flavien/Downloads/website-revizio/visuals/New folder/mascotte.webp\" \"C:/Users/Flavien/Downloads/website-revizio/public/images/mascot-hello.webp\")",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)"
     ]
   }
 }

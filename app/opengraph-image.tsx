@@ -16,48 +16,50 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "80px",
+          padding: "72px",
           background:
-            "radial-gradient(ellipse at top left, rgba(242,107,58,0.25), transparent 60%), #0B0D12",
-          color: "#F5F7FA",
+            "radial-gradient(ellipse at 20% 0%, rgba(77,141,255,0.28), transparent 55%), linear-gradient(180deg, #EEF4F8 0%, #E4EEF4 100%)",
+          color: "#102033",
           fontFamily: "sans-serif",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "16px",
-          }}
-        >
+        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
           <div
             style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "12px",
-              background: "#F26B3A",
+              width: "56px",
+              height: "56px",
+              borderRadius: "16px",
+              background: "#326BDE",
             }}
           />
-          <div style={{ fontSize: "36px", fontWeight: 700, letterSpacing: "-0.02em" }}>
+          <div
+            style={{
+              fontSize: "40px",
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              color: "#102033",
+            }}
+          >
             {site.name}
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
           <div
             style={{
-              fontSize: "84px",
+              fontSize: "96px",
               fontWeight: 700,
-              lineHeight: 1.05,
+              lineHeight: 1.02,
               letterSpacing: "-0.03em",
-              maxWidth: "900px",
+              color: "#102033",
+              maxWidth: "1000px",
             }}
           >
-            Révise avec une méthode{" "}
-            <span style={{ color: "#F26B3A" }}>plus claire.</span>
+            Comprends. Teste-toi.{" "}
+            <span style={{ color: "#326BDE" }}>Retiens.</span>
           </div>
-          <div style={{ fontSize: "28px", color: "#A7B0BE", maxWidth: "900px" }}>
-            Organise tes matières, crée quiz et fiches avec l’IA, suis ta progression.
+          <div style={{ fontSize: "30px", color: "#667487", maxWidth: "900px" }}>
+            Un sujet, une fiche, un quiz ou un examen. En quelques secondes.
           </div>
         </div>
 
@@ -67,15 +69,17 @@ export default function OpengraphImage() {
             alignItems: "center",
             justifyContent: "space-between",
             fontSize: "22px",
-            color: "#A7B0BE",
+            color: "#667487",
           }}
         >
-          <div style={{ display: "flex", gap: "24px" }}>
+          <div style={{ display: "flex", gap: "22px" }}>
             <span>iOS</span>
-            <span style={{ color: "#262B36" }}>·</span>
+            <span style={{ color: "#C5D0DD" }}>·</span>
             <span>Android</span>
+            <span style={{ color: "#C5D0DD" }}>·</span>
+            <span>Sans publicité</span>
           </div>
-          <div>{site.domain}</div>
+          <div style={{ fontWeight: 600 }}>{site.domain}</div>
         </div>
       </div>
     ),

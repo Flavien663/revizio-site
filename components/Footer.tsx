@@ -6,39 +6,107 @@ import logo from "@/public/images/logo.webp";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-24 border-t border-border bg-background">
-      <div className="container-x py-12">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-sm">
-            <div className="flex items-center gap-2 font-semibold">
+    <footer className="mt-24 border-t border-line bg-surface-soft">
+      <div className="container-x py-14">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Link href="/" className="flex items-center gap-2 font-semibold">
               <Image
                 src={logo}
                 alt=""
-                width={28}
-                height={28}
-                className="h-7 w-7 rounded-md object-contain"
+                width={32}
+                height={32}
+                className="h-8 w-8 rounded-xl object-contain"
               />
-              <span>{site.name}</span>
-            </div>
-            <p className="mt-3 text-sm text-text-secondary">
-              Application mobile de révision. Organiser ses matières, planifier ses sessions, avancer sereinement.
+              <span className="text-lg text-ink">{site.name}</span>
+            </Link>
+            <p className="mt-4 max-w-sm text-sm text-text-muted">
+              Un sujet, une fiche, un quiz ou un examen — en quelques secondes. Le compagnon d’apprentissage premium pour tous ceux qui veulent vraiment retenir.
+            </p>
+            <p className="mt-4 text-xs text-text-muted">
+              Disponible sur iOS et Android.
             </p>
           </div>
-          <nav className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm sm:grid-cols-3">
-            <Link className="text-text-secondary hover:text-text-primary" href="/">Accueil</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/support">Support</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/privacy">Politique de confidentialité</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/terms">Conditions d’utilisation</Link>
-            <Link className="text-text-secondary hover:text-text-primary" href="/delete-account">Suppression de compte</Link>
-          </nav>
+          <div className="md:col-span-3">
+            <p className="text-xs font-semibold uppercase tracking-wider text-ink">
+              Produit
+            </p>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/">
+                  Accueil
+                </Link>
+              </li>
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/outils">
+                  Les 8 outils
+                </Link>
+              </li>
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/subscriptions">
+                  Offres et packs
+                </Link>
+              </li>
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/faq">
+                  Questions fréquentes
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="md:col-span-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-ink">
+              Aide
+            </p>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/support">
+                  Support
+                </Link>
+              </li>
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/delete-account">
+                  Supprimer mon compte
+                </Link>
+              </li>
+              <li>
+                <a
+                  className="text-text-muted hover:text-ink"
+                  href={`mailto:${site.supportEmail}`}
+                >
+                  Écrire au support
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="md:col-span-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-ink">
+              Légal
+            </p>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/privacy">
+                  Confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link className="text-text-muted hover:text-ink" href="/terms">
+                  Conditions
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-text-secondary sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalEntity} — Tous droits réservés.
           </p>
           <p>
             Support :{" "}
-            <a className="hover:text-text-primary" href={`mailto:${site.supportEmail}`}>
+            <a
+              className="text-ink hover:text-accent-deep"
+              href={`mailto:${site.supportEmail}`}
+            >
               {site.supportEmail}
             </a>
           </p>
