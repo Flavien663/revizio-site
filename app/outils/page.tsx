@@ -243,12 +243,14 @@ export default function OutilsPage() {
                       aria-hidden
                       className="absolute -inset-5 rounded-[40px] bg-gradient-to-br from-accent-soft to-background-strong blur-2xl opacity-60"
                     />
-                    <div className="relative overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                    <div className="relative flex items-center justify-center overflow-hidden rounded-3xl border border-line bg-white shadow-card">
                       <Image
                         src={t.image}
                         alt={t.alt}
                         sizes="(max-width: 1024px) 80vw, 460px"
-                        className="h-auto w-full"
+                        className={`h-auto w-full ${
+                          t.slug === "pendu" ? "scale-[0.7]" : ""
+                        }`}
                         placeholder="blur"
                       />
                     </div>

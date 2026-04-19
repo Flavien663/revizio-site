@@ -389,12 +389,14 @@ export default function Home() {
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {tools.map((t) => (
               <article key={t.name} className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-transform hover:-translate-y-1">
-                <div className="aspect-[3/4] overflow-hidden bg-surface-soft">
+                <div className="flex aspect-[3/4] items-center justify-center overflow-hidden bg-surface-soft">
                   <Image
                     src={t.image}
                     alt={t.alt}
                     sizes="(max-width: 640px) 45vw, 260px"
-                    className="h-full w-full object-cover"
+                    className={`h-full w-full object-cover ${
+                      t.name === "Pendu" ? "scale-[0.7]" : ""
+                    }`}
                     placeholder={typeof t.image === "string" ? undefined : "blur"}
                   />
                 </div>
