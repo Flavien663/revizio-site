@@ -50,9 +50,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/logo.webp", type: "image/webp" },
+      { url: "/images/mascot-hello.webp", type: "image/webp" },
     ],
-    apple: "/images/logo.webp",
+    apple: "/images/mascot-hello.webp",
   },
   robots: {
     index: true,
