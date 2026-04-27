@@ -18,21 +18,39 @@ export const metadata: Metadata = {
   },
 };
 
-const plans = [
+type Plan = {
+  name: string;
+  price: string;
+  cadence: string;
+  yearly?: string;
+  tag: string | null;
+  tone: "neutral" | "accent" | "gold";
+  promise: string;
+  included: string[];
+  excluded: string[];
+};
+
+const plans: Plan[] = [
   {
     name: "Free",
     price: "0 €",
     cadence: "pour toujours",
-    tag: null as string | null,
-    tone: "neutral" as const,
+    tag: null,
+    tone: "neutral",
     promise: "Une base solide, pas une démo.",
-    features: [
+    included: [
       "2 sujets, 5 chapitres par sujet",
       "Pendu, Bingo, Mots croisés",
       "Planning, niveaux, séries",
       "Toutes les récompenses gratuites",
     ],
-    not: ["Mémo visuel, Quiz, Mémo structuré, Examen blanc, Rappels intelligents"],
+    excluded: [
+      "Mémo visuel",
+      "Quiz",
+      "Mémo structuré",
+      "Examen blanc",
+      "Rappels intelligents",
+    ],
   },
   {
     name: "Premium",
@@ -40,16 +58,21 @@ const plans = [
     cadence: "/mois",
     yearly: "29,99 €/an",
     tag: "Le plus populaire",
-    tone: "accent" as const,
+    tone: "accent",
     promise: "Les outils intelligents pour réviser sérieusement.",
-    features: [
+    included: [
       "Sujets et chapitres illimités",
       "50 cerveaux chaque mois",
-      "Mémo visuel et Quiz",
-      "Tarifs dégressifs sur les jeux",
+      "Mémo visuel",
+      "Quiz",
       "Banques de 30 questions",
+      "−20 % sur les jeux IA",
     ],
-    not: ["Mémo structuré, Examen blanc, Rappels intelligents (réservés à Max)"],
+    excluded: [
+      "Mémo structuré",
+      "Examen blanc",
+      "Rappels intelligents",
+    ],
   },
   {
     name: "Max",
@@ -57,30 +80,37 @@ const plans = [
     cadence: "/mois",
     yearly: "59,99 €/an",
     tag: "Le plus complet",
-    tone: "gold" as const,
+    tone: "gold",
     promise: "La meilleure expérience qu’on puisse t’offrir.",
-    features: [
-      "Tout Premium",
+    included: [
+      "Sujets et chapitres illimités",
       "150 cerveaux chaque mois",
+      "Mémo visuel",
+      "Quiz",
       "Mémo structuré",
       "Examen blanc noté sur 20",
       "Rappels intelligents",
-      "Mots croisés à tarif réduit",
-      "Planning calé sur ton échéance",
+      "−40 % sur les jeux IA",
     ],
-    not: [],
+    excluded: [],
   },
 ];
 
-const costs = [
-  { tool: "Pendu", free: "5", premium: "4", max: "3" },
-  { tool: "Bingo", free: "5", premium: "4", max: "3" },
-  { tool: "Mots croisés", free: "5", premium: "4", max: "3" },
-  { tool: "Mémo visuel", free: "—", premium: "7", max: "7" },
-  { tool: "Quiz", free: "—", premium: "7", max: "7" },
-  { tool: "Mémo structuré", free: "—", premium: "—", max: "9" },
-  { tool: "Examen blanc", free: "—", premium: "—", max: "9" },
-  { tool: "Rappels intelligents", free: "—", premium: "—", max: "7" },
+const costs: Array<{
+  tool: string;
+  free: string;
+  premium: string;
+  max: string;
+  dot: string;
+}> = [
+  { tool: "Pendu", free: "5", premium: "4", max: "3", dot: "bg-hangman" },
+  { tool: "Bingo", free: "5", premium: "4", max: "3", dot: "bg-bingo" },
+  { tool: "Mots croisés", free: "5", premium: "4", max: "3", dot: "bg-crossword" },
+  { tool: "Mémo visuel", free: "—", premium: "7", max: "7", dot: "bg-memovisuel" },
+  { tool: "Quiz", free: "—", premium: "7", max: "7", dot: "bg-quiz" },
+  { tool: "Mémo structuré", free: "—", premium: "—", max: "9", dot: "bg-memostruct" },
+  { tool: "Examen blanc", free: "—", premium: "—", max: "9", dot: "bg-exam" },
+  { tool: "Rappels intelligents", free: "—", premium: "—", max: "7", dot: "bg-notifs" },
 ];
 
 const packs = [
@@ -114,16 +144,16 @@ export default function SubscriptionsPage() {
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-3">
             {plans.map((p) => {
-              const ring =
+              const cardLook =
                 p.tone === "accent"
-                  ? "ring-2 ring-accent-deep/30 border-accent-deep/40"
+                  ? "ring-2 ring-accent-deep/30 border-accent-deep/40 bg-gradient-to-br from-white via-white to-accent-soft/40"
                   : p.tone === "gold"
-                  ? "ring-2 ring-gold/30 border-gold/40"
-                  : "border-line";
+                  ? "ring-2 ring-gold/30 border-gold/40 bg-gradient-to-br from-white via-white to-gold-soft/60"
+                  : "border-line bg-white";
               return (
                 <article
                   key={p.name}
-                  className={`flex flex-col rounded-3xl border bg-white p-8 shadow-card ${ring}`}
+                  className={`flex flex-col rounded-3xl border p-8 shadow-card transition-transform hover:-translate-y-1 ${cardLook}`}
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-2xl font-semibold text-ink">{p.name}</h2>
@@ -146,7 +176,7 @@ export default function SubscriptionsPage() {
                   )}
 
                   <ul className="mt-7 space-y-3 text-sm">
-                    {p.features.map((f) => (
+                    {p.included.map((f) => (
                       <li key={f} className="flex items-start gap-2 text-text-body">
                         <CheckIcon />
                         <span>{f}</span>
@@ -154,15 +184,25 @@ export default function SubscriptionsPage() {
                     ))}
                   </ul>
 
-                  {p.not.length > 0 && (
-                    <ul className="mt-5 space-y-2 text-sm text-text-muted">
-                      {p.not.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <span aria-hidden className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-line" />
-                          <span>Non inclus : {f}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {p.excluded.length > 0 && (
+                    <>
+                      <p className="mt-6 text-[11px] font-semibold uppercase tracking-wider text-text-muted">
+                        Non inclus
+                      </p>
+                      <ul className="mt-3 space-y-2.5 text-sm">
+                        {p.excluded.map((f) => (
+                          <li
+                            key={`x-${f}`}
+                            className="flex items-start gap-2 text-text-muted"
+                          >
+                            <CrossIcon />
+                            <span className="line-through decoration-danger/40 decoration-1">
+                              {f}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
                   )}
 
                   <div className="mt-8">
@@ -194,16 +234,31 @@ export default function SubscriptionsPage() {
               index="1"
               title="Abonnement = accès"
               body="Ton plan (Free, Premium, Max) détermine les outils que tu peux lancer. Free = jeux + 2 sujets. Premium ajoute Mémo visuel et Quiz. Max ajoute Mémo structuré, Examen blanc et Rappels intelligents."
+              palette={{
+                topBorder: "before:bg-accent",
+                pill: "bg-accent-soft text-accent-deep",
+                glow: "from-accent-soft",
+              }}
             />
             <ConceptCard
               index="2"
               title="Cerveaux = énergie"
               body="Chaque outil IA consomme quelques cerveaux. Ton plan en recharge tous les mois (50 en Premium, 150 en Max). Les cerveaux mensuels s’accumulent si tu ne les utilises pas."
+              palette={{
+                topBorder: "before:bg-memovisuel",
+                pill: "bg-memovisuel-tintStrong text-memovisuel-deep",
+                glow: "from-memovisuel-tint",
+              }}
             />
             <ConceptCard
               index="3"
               title="Packs = recharge"
               body="Les packs ajoutent des cerveaux à ton compteur, ponctuellement. Ils ne changent jamais ton plan et ne débloquent jamais un outil. Acheter un pack en Free reste Free."
+              palette={{
+                topBorder: "before:bg-hangman",
+                pill: "bg-hangman-tintStrong text-hangman-deep",
+                glow: "from-hangman-tint",
+              }}
             />
           </div>
         </div>
@@ -233,8 +288,16 @@ export default function SubscriptionsPage() {
                 </thead>
                 <tbody className="divide-y divide-line">
                   {costs.map((c) => (
-                    <tr key={c.tool}>
-                      <td className="px-5 py-3 font-medium text-ink">{c.tool}</td>
+                    <tr key={c.tool} className="transition-colors hover:bg-surface-soft">
+                      <td className="px-5 py-3 font-medium text-ink">
+                        <span className="inline-flex items-center gap-2.5">
+                          <span
+                            aria-hidden
+                            className={`h-2 w-2 shrink-0 rounded-full ${c.dot}`}
+                          />
+                          {c.tool}
+                        </span>
+                      </td>
                       <td className="px-5 py-3 text-text-body">{c.free}</td>
                       <td className="px-5 py-3 text-text-body">{c.premium}</td>
                       <td className="px-5 py-3 text-text-body">{c.max}</td>
@@ -345,33 +408,66 @@ function ConceptCard({
   index,
   title,
   body,
+  palette,
 }: {
   index: string;
   title: string;
   body: string;
+  palette: { topBorder: string; pill: string; glow: string };
 }) {
   return (
-    <article className="relative rounded-3xl border border-line bg-white p-8 shadow-card">
-      <span className="pill-accent">{index}</span>
-      <h3 className="mt-5 text-xl font-semibold text-ink">{title}</h3>
-      <p className="mt-3 text-text-body">{body}</p>
+    <article
+      className={`group relative overflow-hidden rounded-3xl border border-line bg-white p-8 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft before:absolute before:left-0 before:right-0 before:top-0 before:h-1 ${palette.topBorder}`}
+    >
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-br ${palette.glow} to-transparent opacity-50 blur-2xl transition-opacity group-hover:opacity-90`}
+      />
+      <span
+        className={`relative inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold ${palette.pill}`}
+      >
+        {index}
+      </span>
+      <h3 className="relative mt-5 text-xl font-semibold text-ink">{title}</h3>
+      <p className="relative mt-3 text-text-body">{body}</p>
     </article>
   );
 }
 
 function CheckIcon() {
   return (
-    <svg
-      viewBox="0 0 20 20"
-      className="mt-0.5 h-4 w-4 shrink-0 text-accent-deep"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M4 10l4 4 8-8" />
-    </svg>
+    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success-soft text-success">
+      <svg
+        viewBox="0 0 20 20"
+        className="h-3.5 w-3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <path d="M4 10l4 4 8-8" />
+      </svg>
+    </span>
+  );
+}
+
+function CrossIcon() {
+  return (
+    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-danger-soft text-danger">
+      <svg
+        viewBox="0 0 20 20"
+        className="h-3.5 w-3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <path d="M5 5l10 10M15 5L5 15" />
+      </svg>
+    </span>
   );
 }

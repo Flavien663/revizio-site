@@ -202,22 +202,35 @@ const tools: Tool[] = [
   },
 ];
 
-const groups = [
+const groups: Array<{
+  name: string;
+  description: string;
+  topBorder: string;
+  eyebrow: string;
+}> = [
   {
     name: "Apprendre et retenir",
     description: "Les livrables qui t’aident à comprendre un sujet et à fixer l’essentiel.",
+    topBorder: "before:bg-memovisuel",
+    eyebrow: "text-memovisuel-deep",
   },
   {
     name: "Se tester",
     description: "De vrais tests, corrigés, pour savoir où tu en es.",
+    topBorder: "before:bg-quiz",
+    eyebrow: "text-quiz-deep",
   },
   {
     name: "Ne plus oublier",
     description: "Des rappels qui travaillent pour toi, à tes horaires.",
+    topBorder: "before:bg-notifs",
+    eyebrow: "text-notifs-deep",
   },
   {
     name: "Jouer pour ancrer",
     description: "Trois mini-jeux générés sur ton sujet, accessibles à tous les plans.",
+    topBorder: "before:bg-hangman",
+    eyebrow: "text-hangman-deep",
   },
 ];
 
@@ -253,8 +266,18 @@ export default function OutilsPage() {
         <div className="container-x">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {groups.map((g) => (
-              <div key={g.name} className="card-soft">
-                <h2 className="text-base font-semibold text-ink">{g.name}</h2>
+              <div
+                key={g.name}
+                className={`relative overflow-hidden rounded-2xl border border-line bg-white p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-card before:absolute before:left-0 before:right-0 before:top-0 before:h-1 ${g.topBorder}`}
+              >
+                <p
+                  className={`text-[11px] font-semibold uppercase tracking-[0.14em] ${g.eyebrow}`}
+                >
+                  Famille
+                </p>
+                <h2 className="mt-1 text-base font-semibold text-ink">
+                  {g.name}
+                </h2>
                 <p className="mt-2 text-sm text-text-body">{g.description}</p>
               </div>
             ))}

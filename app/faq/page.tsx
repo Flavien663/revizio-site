@@ -17,13 +17,24 @@ export const metadata: Metadata = {
 };
 
 type Q = { q: string; a: string };
-type Category = { id: string; title: string; intro?: string; items: Q[] };
+type Category = {
+  id: string;
+  title: string;
+  intro?: string;
+  items: Q[];
+  palette: { eyebrow: string; pill: string; topBorder: string };
+};
 
 const categories: Category[] = [
   {
     id: "produit",
     title: "Le produit",
     intro: "Ce que Revizio fait, et ce que Revizio n’est pas.",
+    palette: {
+      eyebrow: "text-memovisuel-deep",
+      pill: "border-memovisuel/30 text-memovisuel-deep hover:bg-memovisuel-tint",
+      topBorder: "before:bg-memovisuel",
+    },
     items: [
       {
         q: "Faut-il être étudiant pour utiliser Revizio ?",
@@ -55,6 +66,11 @@ const categories: Category[] = [
     id: "offres",
     title: "Cerveaux, abonnements, packs",
     intro: "Trois choses différentes. Pas de confusion.",
+    palette: {
+      eyebrow: "text-hangman-deep",
+      pill: "border-hangman/30 text-hangman-deep hover:bg-hangman-tint",
+      topBorder: "before:bg-hangman",
+    },
     items: [
       {
         q: "Que sont les cerveaux ?",
@@ -66,7 +82,7 @@ const categories: Category[] = [
       },
       {
         q: "Quelle est la différence entre Free, Premium et Max ?",
-        a: "Free : 2 sujets max, 5 chapitres par sujet, jeux Pendu / Bingo / Mots croisés. Zéro cerveau offert par mois. Premium (3,99 €/mois) : sujets et chapitres illimités, 50 cerveaux/mois, Mémo visuel et Quiz. Max (7,99 €/mois) : 150 cerveaux/mois, tout Premium + Mémo structuré + Examen blanc + Rappels intelligents + planning calé sur tes échéances.",
+        a: "Free : 2 sujets max, 5 chapitres par sujet, jeux Pendu / Bingo / Mots croisés. Zéro cerveau offert par mois. Premium (3,99 €/mois) : sujets et chapitres illimités, 50 cerveaux/mois, Mémo visuel et Quiz, −20 % sur les jeux IA. Max (7,99 €/mois) : 150 cerveaux/mois, tout Premium + Mémo structuré + Examen blanc + Rappels intelligents, −40 % sur les jeux IA.",
       },
       {
         q: "Est-ce qu’il y a un essai gratuit ?",
@@ -97,6 +113,11 @@ const categories: Category[] = [
   {
     id: "compte",
     title: "Compte et appareils",
+    palette: {
+      eyebrow: "text-quiz-deep",
+      pill: "border-quiz/30 text-quiz-deep hover:bg-quiz-tint",
+      topBorder: "before:bg-quiz",
+    },
     items: [
       {
         q: "Comment créer un compte ?",
@@ -127,6 +148,11 @@ const categories: Category[] = [
   {
     id: "parrainage",
     title: "Parrainage",
+    palette: {
+      eyebrow: "text-bingo-deep",
+      pill: "border-bingo/30 text-bingo-deep hover:bg-bingo-tint",
+      topBorder: "before:bg-bingo",
+    },
     items: [
       {
         q: "Comment fonctionne le parrainage ?",
@@ -141,6 +167,11 @@ const categories: Category[] = [
   {
     id: "donnees",
     title: "Confidentialité et données",
+    palette: {
+      eyebrow: "text-exam-deep",
+      pill: "border-exam/30 text-exam-deep hover:bg-exam-tint",
+      topBorder: "before:bg-exam",
+    },
     items: [
       {
         q: "Où sont stockées mes données ?",
@@ -171,6 +202,11 @@ const categories: Category[] = [
   {
     id: "notifications",
     title: "Notifications",
+    palette: {
+      eyebrow: "text-notifs-deep",
+      pill: "border-notifs/30 text-notifs-deep hover:bg-notifs-tint",
+      topBorder: "before:bg-notifs",
+    },
     items: [
       {
         q: "Quelles notifications Revizio envoie ?",
@@ -189,6 +225,11 @@ const categories: Category[] = [
   {
     id: "technique",
     title: "Appareils et achats",
+    palette: {
+      eyebrow: "text-memostruct-deep",
+      pill: "border-memostruct/30 text-memostruct-deep hover:bg-memostruct-tint",
+      topBorder: "before:bg-memostruct",
+    },
     items: [
       {
         q: "Sur quels appareils Revizio fonctionne ?",
@@ -207,6 +248,11 @@ const categories: Category[] = [
   {
     id: "contact",
     title: "Support",
+    palette: {
+      eyebrow: "text-crossword-deep",
+      pill: "border-crossword/30 text-crossword-deep hover:bg-crossword-tint",
+      topBorder: "before:bg-crossword",
+    },
     items: [
       {
         q: "Comment contacter le support ?",
@@ -265,7 +311,7 @@ export default function FaqPage() {
               <a
                 key={c.id}
                 href={`#${c.id}`}
-                className="pill hover:border-accent hover:text-accent-deep"
+                className={`inline-flex items-center rounded-full border bg-white px-3 py-1 text-xs font-medium transition-colors ${c.palette.pill}`}
               >
                 {c.title}
               </a>
@@ -280,13 +326,20 @@ export default function FaqPage() {
           <div className="mx-auto max-w-3xl space-y-14">
             {categories.map((c) => (
               <div key={c.id} id={c.id} className="scroll-mt-24">
+                <p
+                  className={`mb-2 text-xs font-semibold uppercase tracking-[0.14em] ${c.palette.eyebrow}`}
+                >
+                  Catégorie
+                </p>
                 <h2 className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
                   {c.title}
                 </h2>
                 {c.intro && (
                   <p className="mt-2 text-text-body">{c.intro}</p>
                 )}
-                <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+                <div
+                  className={`relative mt-6 overflow-hidden rounded-2xl border border-line bg-white shadow-card before:absolute before:left-0 before:right-0 before:top-0 before:h-1 ${c.palette.topBorder}`}
+                >
                   {c.items.map((item, idx) => (
                     <details
                       key={item.q}

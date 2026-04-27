@@ -46,21 +46,51 @@ const profiles = [
   },
 ];
 
-const pillars = [
+type PillarPalette = {
+  topBorder: string;
+  index: string;
+  highlight: string;
+  glow: string;
+};
+
+const pillars: Array<{
+  title: string;
+  body: string;
+  highlight: string;
+  palette: PillarPalette;
+}> = [
   {
     title: "Comprends vite",
     body: "Photographie un document. Tu récupères une fiche nette en dix secondes, avec les points clés, les définitions et les pièges.",
     highlight: "Mémo visuel",
+    palette: {
+      topBorder: "before:bg-memovisuel",
+      index: "bg-memovisuel-tintStrong text-memovisuel-deep",
+      highlight: "bg-memovisuel-tintStrong text-memovisuel-deep",
+      glow: "from-memovisuel-tint",
+    },
   },
   {
     title: "Teste-toi sérieusement",
     body: "30 questions ciblées pour voir ce que tu maîtrises, ou un vrai examen noté sur 20 avec correction détaillée.",
     highlight: "Quiz et Examen blanc",
+    palette: {
+      topBorder: "before:bg-quiz",
+      index: "bg-quiz-tintStrong text-quiz-deep",
+      highlight: "bg-quiz-tintStrong text-quiz-deep",
+      glow: "from-quiz-tint",
+    },
   },
   {
     title: "Retiens sans y penser",
     body: "Trente micro-notions livrées à tes horaires, sur dix jours. Ton cerveau travaille pendant que tu vis ta journée.",
     highlight: "Rappels intelligents",
+    palette: {
+      topBorder: "before:bg-notifs",
+      index: "bg-notifs-tintStrong text-notifs-deep",
+      highlight: "bg-notifs-tintStrong text-notifs-deep",
+      glow: "from-notifs-tint",
+    },
   },
 ];
 
@@ -176,18 +206,33 @@ const tools: Array<{
   },
 ];
 
-const plans = [
+const plans: Array<{
+  name: string;
+  price: string;
+  cadence: string;
+  tag: string | null;
+  promise: string;
+  included: string[];
+  excluded: string[];
+}> = [
   {
     name: "Free",
     price: "0 €",
     cadence: "pour toujours",
-    tag: null as string | null,
+    tag: null,
     promise: "Un vrai tier permanent pour commencer.",
-    features: [
+    included: [
       "2 sujets, 5 chapitres par sujet",
       "Pendu, Bingo, Mots croisés",
       "Planning et progression complets",
       "Récompenses, niveaux, séries",
+    ],
+    excluded: [
+      "Mémo visuel",
+      "Quiz",
+      "Mémo structuré",
+      "Examen blanc",
+      "Rappels intelligents",
     ],
   },
   {
@@ -196,11 +241,17 @@ const plans = [
     cadence: "par mois",
     tag: "Le plus populaire",
     promise: "Les outils intelligents pour réviser sérieusement.",
-    features: [
+    included: [
       "Sujets et chapitres illimités",
       "50 cerveaux chaque mois",
-      "Mémo visuel et Quiz",
-      "Tarifs dégressifs sur les jeux",
+      "Mémo visuel",
+      "Quiz",
+      "−20 % sur les jeux IA",
+    ],
+    excluded: [
+      "Mémo structuré",
+      "Examen blanc",
+      "Rappels intelligents",
     ],
   },
   {
@@ -209,31 +260,44 @@ const plans = [
     cadence: "par mois",
     tag: "Le plus complet",
     promise: "La meilleure expérience qu’on puisse t’offrir.",
-    features: [
-      "Tout Premium",
+    included: [
+      "Sujets et chapitres illimités",
       "150 cerveaux chaque mois",
-      "Mémo structuré, Examen blanc, Rappels intelligents",
-      "Planning calé sur ton échéance",
+      "Mémo visuel",
+      "Quiz",
+      "Mémo structuré",
+      "Examen blanc noté sur 20",
+      "Rappels intelligents",
+      "−40 % sur les jeux IA",
     ],
+    excluded: [],
   },
 ];
 
-const trustPoints = [
+const trustPoints: Array<{
+  title: string;
+  body: string;
+  accent: string;
+}> = [
   {
     title: "Sans mot de passe",
     body: "Connexion par Apple, Google ou code à 6 chiffres par email.",
+    accent: "bg-accent",
   },
   {
     title: "Pas d’essai piège",
     body: "Le Free est un vrai tier permanent, pas une démo qui expire.",
+    accent: "bg-success",
   },
   {
     title: "Les cerveaux ne se perdent pas",
     body: "Ils s’accumulent d’un mois sur l’autre si tu ne les utilises pas.",
+    accent: "bg-memovisuel",
   },
   {
     title: "Sans publicité",
     body: "Pas de pub, pas de vente de données. Jamais.",
+    accent: "bg-bingo",
   },
 ];
 
@@ -373,7 +437,10 @@ export default function Home() {
 
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {profiles.map((p) => (
-              <div key={p.title} className="card">
+              <div
+                key={p.title}
+                className="card group transition-all hover:-translate-y-1 hover:border-accent/50 hover:shadow-soft"
+              >
                 <ProfileIcon variant={p.icon as "cap" | "briefcase" | "compass"} />
                 <h3 className="mt-5 text-lg font-semibold text-ink">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-text-body">
@@ -402,16 +469,28 @@ export default function Home() {
             {pillars.map((p, idx) => (
               <article
                 key={p.title}
-                className="relative overflow-hidden rounded-3xl border border-line bg-white p-8 shadow-card"
+                className={`group relative overflow-hidden rounded-3xl border border-line bg-white p-8 shadow-card transition-all hover:-translate-y-1 hover:shadow-soft before:absolute before:left-0 before:right-0 before:top-0 before:h-1 ${p.palette.topBorder}`}
               >
-                <div className="flex items-start justify-between">
-                  <span className="pill-accent">0{idx + 1}</span>
-                  <span className="pill">{p.highlight}</span>
+                <div
+                  aria-hidden
+                  className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${p.palette.glow} to-transparent opacity-60 blur-2xl transition-opacity group-hover:opacity-90`}
+                />
+                <div className="relative flex items-start justify-between">
+                  <span
+                    className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${p.palette.index}`}
+                  >
+                    0{idx + 1}
+                  </span>
+                  <span
+                    className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${p.palette.highlight}`}
+                  >
+                    {p.highlight}
+                  </span>
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold text-ink">
+                <h3 className="relative mt-6 text-2xl font-semibold text-ink">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-text-body">{p.body}</p>
+                <p className="relative mt-3 text-text-body">{p.body}</p>
               </article>
             ))}
           </div>
@@ -582,53 +661,66 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {plans.map((p, idx) => (
-              <article
-                key={p.name}
-                className={`flex flex-col rounded-3xl border p-8 shadow-card ${
-                  idx === 1
-                    ? "border-accent-deep/40 bg-white ring-2 ring-accent-deep/15"
-                    : idx === 2
-                    ? "border-gold/40 bg-white ring-1 ring-gold/20"
-                    : "border-line bg-white"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold text-ink">{p.name}</h3>
-                  {p.tag && (
-                    <span className={idx === 2 ? "pill-gold" : "pill-accent"}>
-                      {p.tag}
+            {plans.map((p, idx) => {
+              const cardClass =
+                idx === 1
+                  ? "border-accent-deep/40 bg-gradient-to-br from-white via-white to-accent-soft/40 ring-2 ring-accent-deep/15"
+                  : idx === 2
+                  ? "border-gold/40 bg-gradient-to-br from-white via-white to-gold-soft/60 ring-1 ring-gold/30"
+                  : "border-line bg-white";
+              return (
+                <article
+                  key={p.name}
+                  className={`flex flex-col rounded-3xl border p-8 shadow-card transition-transform hover:-translate-y-1 ${cardClass}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-xl font-semibold text-ink">{p.name}</h3>
+                    {p.tag && (
+                      <span className={idx === 2 ? "pill-gold" : "pill-accent"}>
+                        {p.tag}
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-2 text-sm text-text-muted">{p.promise}</p>
+
+                  <div className="mt-6 flex items-baseline gap-2">
+                    <span className="text-4xl font-semibold tracking-tight text-ink">
+                      {p.price}
                     </span>
-                  )}
-                </div>
-                <p className="mt-2 text-sm text-text-muted">{p.promise}</p>
+                    <span className="text-sm text-text-muted">{p.cadence}</span>
+                  </div>
 
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-4xl font-semibold tracking-tight text-ink">
-                    {p.price}
-                  </span>
-                  <span className="text-sm text-text-muted">{p.cadence}</span>
-                </div>
+                  <ul className="mt-6 space-y-3 text-sm">
+                    {p.included.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-text-body">
+                        <CheckIcon />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                    {p.excluded.map((f) => (
+                      <li
+                        key={`x-${f}`}
+                        className="flex items-start gap-2 text-text-muted"
+                      >
+                        <CrossIcon />
+                        <span className="line-through decoration-danger/40 decoration-1">
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
 
-                <ul className="mt-6 space-y-3 text-sm">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-text-body">
-                      <CheckIcon />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8">
-                  <Link
-                    href="/subscriptions"
-                    className={idx === 1 ? "btn-primary w-full" : "btn-ghost w-full"}
-                  >
-                    {idx === 0 ? "Commencer gratuitement" : `Découvrir ${p.name}`}
-                  </Link>
-                </div>
-              </article>
-            ))}
+                  <div className="mt-8">
+                    <Link
+                      href="/subscriptions"
+                      className={idx === 1 ? "btn-primary w-full" : "btn-ghost w-full"}
+                    >
+                      {idx === 0 ? "Commencer gratuitement" : `Découvrir ${p.name}`}
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
           <p className="mx-auto mt-10 max-w-2xl text-center text-xs text-text-muted">
@@ -648,7 +740,14 @@ export default function Home() {
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {trustPoints.map((t) => (
-              <div key={t.title} className="card-soft">
+              <div
+                key={t.title}
+                className="relative overflow-hidden rounded-2xl border border-line bg-surface-soft p-6 transition-colors hover:bg-white"
+              >
+                <span
+                  aria-hidden
+                  className={`absolute left-0 top-6 h-8 w-1 rounded-r ${t.accent}`}
+                />
                 <h3 className="text-base font-semibold text-ink">{t.title}</h3>
                 <p className="mt-2 text-sm text-text-body">{t.body}</p>
               </div>
@@ -712,18 +811,39 @@ function Stat({ n, label }: { n: string; label: string }) {
 
 function CheckIcon() {
   return (
-    <svg
-      viewBox="0 0 20 20"
-      className="mt-0.5 h-4 w-4 shrink-0 text-accent-deep"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M4 10l4 4 8-8" />
-    </svg>
+    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-success-soft text-success">
+      <svg
+        viewBox="0 0 20 20"
+        className="h-3.5 w-3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <path d="M4 10l4 4 8-8" />
+      </svg>
+    </span>
+  );
+}
+
+function CrossIcon() {
+  return (
+    <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-danger-soft text-danger">
+      <svg
+        viewBox="0 0 20 20"
+        className="h-3.5 w-3.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <path d="M5 5l10 10M15 5L5 15" />
+      </svg>
+    </span>
   );
 }
 
