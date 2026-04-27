@@ -66,6 +66,7 @@ const plans: Plan[] = [
       "Mémo visuel",
       "Quiz",
       "Banques de 30 questions",
+      "Pendu, Bingo, Mots croisés",
       "−20 % sur les jeux IA",
     ],
     excluded: [
@@ -90,6 +91,7 @@ const plans: Plan[] = [
       "Mémo structuré",
       "Examen blanc noté sur 20",
       "Rappels intelligents",
+      "Pendu, Bingo, Mots croisés",
       "−40 % sur les jeux IA",
     ],
     excluded: [],

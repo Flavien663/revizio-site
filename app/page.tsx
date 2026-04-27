@@ -246,6 +246,7 @@ const plans: Array<{
       "50 cerveaux chaque mois",
       "Mémo visuel",
       "Quiz",
+      "Pendu, Bingo, Mots croisés",
       "−20 % sur les jeux IA",
     ],
     excluded: [
@@ -268,6 +269,7 @@ const plans: Array<{
       "Mémo structuré",
       "Examen blanc noté sur 20",
       "Rappels intelligents",
+      "Pendu, Bingo, Mots croisés",
       "−40 % sur les jeux IA",
     ],
     excluded: [],
@@ -336,7 +338,15 @@ export default function Home() {
 
       {/* ============== HERO ============== */}
       <section className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-accent" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-radial-accent"
+        />
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-memovisuel/15 blur-3xl" />
+          <div className="absolute right-0 top-1/3 h-72 w-72 rounded-full bg-quiz/15 blur-3xl" />
+          <div className="absolute -bottom-16 left-1/3 h-64 w-64 rounded-full bg-hangman/12 blur-3xl" />
+        </div>
         <div className="container-x relative pt-16 pb-20 sm:pt-24 sm:pb-24">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
@@ -377,11 +387,27 @@ export default function Home() {
               <div className="relative">
                 <div
                   aria-hidden
-                  className="absolute -inset-8 rounded-[48px] bg-gradient-to-br from-accent-soft via-white to-background-strong blur-2xl opacity-70"
+                  className="absolute -inset-8 rounded-[48px] bg-gradient-to-br from-memovisuel-tint via-white to-quiz-tint blur-2xl opacity-70"
+                />
+                <span
+                  aria-hidden
+                  className="absolute -left-3 top-6 h-3 w-3 rounded-full bg-memovisuel shadow-soft"
+                />
+                <span
+                  aria-hidden
+                  className="absolute right-6 -top-3 h-2.5 w-2.5 rounded-full bg-hangman shadow-soft"
+                />
+                <span
+                  aria-hidden
+                  className="absolute -right-2 bottom-16 h-3 w-3 rounded-full bg-bingo shadow-soft"
+                />
+                <span
+                  aria-hidden
+                  className="absolute -bottom-2 left-12 h-2.5 w-2.5 rounded-full bg-quiz shadow-soft"
                 />
                 <div className="relative grid grid-cols-6 gap-3">
                   <div className="col-span-4 col-start-1 row-start-1">
-                    <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                    <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-memovisuel/10">
                       <Image
                         src={heroFiche}
                         alt="Fiche générée dans Revizio"
@@ -393,7 +419,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="col-span-3 col-start-4 row-start-1 translate-y-20">
-                    <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-accent/10">
+                    <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-hangman/15">
                       <Image
                         src={heroMascotRewards}
                         alt="Récompense de cerveaux Revizio"
@@ -405,7 +431,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="col-span-3 col-start-2 row-start-2 translate-y-6">
-                    <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                    <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-quiz/15">
                       <Image
                         src={heroQuiz}
                         alt="Quiz Revizio"
@@ -555,11 +581,17 @@ export default function Home() {
       </section>
 
       {/* ============== EXEMPLE CONCRET ============== */}
-      <section className="py-20 sm:py-28">
-        <div className="container-x">
+      <section className="relative overflow-hidden py-20 sm:py-28">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-20 top-10 h-72 w-72 rounded-full bg-memostruct/12 blur-3xl" />
+          <div className="absolute -left-16 bottom-10 h-64 w-64 rounded-full bg-exam/15 blur-3xl" />
+        </div>
+        <div className="container-x relative">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
-              <p className="eyebrow mb-3">Exemple concret</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-memostruct-deep mb-3">
+                Exemple concret
+              </p>
               <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
                 Un sujet. Un livrable.
                 <br />
@@ -571,6 +603,17 @@ export default function Home() {
               <p className="mt-4 text-text-body">
                 Tu préfères te tester ? Demande un Quiz. Ou un Examen blanc noté sur 20, avec correction détaillée pour chaque question.
               </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                <span className="inline-flex items-center rounded-full bg-memostruct-tintStrong px-3 py-1 text-xs font-semibold text-memostruct-deep">
+                  Mémo structuré
+                </span>
+                <span className="inline-flex items-center rounded-full bg-exam-tintStrong px-3 py-1 text-xs font-semibold text-exam-deep">
+                  Examen blanc
+                </span>
+                <span className="inline-flex items-center rounded-full bg-quiz-tintStrong px-3 py-1 text-xs font-semibold text-quiz-deep">
+                  Quiz
+                </span>
+              </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/outils" className="btn-primary">
                   Voir tous les outils
@@ -584,10 +627,22 @@ export default function Home() {
             <div className="relative">
               <div
                 aria-hidden
-                className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-accent-soft to-background-strong blur-2xl opacity-70"
+                className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-memostruct-tint via-white to-exam-tint blur-2xl opacity-80"
+              />
+              <span
+                aria-hidden
+                className="absolute -left-3 top-8 h-3 w-3 rounded-full bg-memostruct shadow-soft"
+              />
+              <span
+                aria-hidden
+                className="absolute -right-2 bottom-16 h-3 w-3 rounded-full bg-exam shadow-soft"
+              />
+              <span
+                aria-hidden
+                className="absolute right-1/3 -top-3 h-2.5 w-2.5 rounded-full bg-quiz shadow-soft"
               />
               <div className="relative grid grid-cols-2 gap-4">
-                <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-memostruct/15">
                   <Image
                     src={featureMemoStructured}
                     alt="Mémo structuré généré dans Revizio"
@@ -596,7 +651,7 @@ export default function Home() {
                     placeholder="blur"
                   />
                 </div>
-                <div className="mt-10 overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                <div className="mt-10 overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-exam/15">
                   <Image
                     src={featureExam}
                     alt="Examen blanc noté sur 20"
