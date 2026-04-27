@@ -350,18 +350,25 @@ export default function Home() {
         <div className="container-x relative pt-16 pb-20 sm:pt-24 sm:pb-24">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="pill-accent">Disponible sur iOS — Android bientôt</span>
+                <span className="inline-flex items-center rounded-full bg-success-soft px-3 py-1 text-xs font-semibold text-success">
+                  Sans publicité
+                </span>
               </div>
               <h1 className="mt-5 text-5xl font-semibold leading-[1.02] tracking-tight text-ink sm:text-6xl md:text-7xl">
-                Comprends.
+                <span className="text-memovisuel-deep">Comprends.</span>
                 <br />
-                Teste-toi.
+                <span className="text-quiz-deep">Teste-toi.</span>
                 <br />
-                <span className="text-accent-deep">Retiens.</span>
+                <span className="text-notifs-deep">Retiens.</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg text-text-body sm:text-xl">
-                Revizio transforme un sujet en fiche, quiz, examen ou rappels.
+                Revizio transforme un sujet en{" "}
+                <span className="font-semibold text-memovisuel-deep">fiche</span>,{" "}
+                <span className="font-semibold text-quiz-deep">quiz</span>,{" "}
+                <span className="font-semibold text-exam-deep">examen</span> ou{" "}
+                <span className="font-semibold text-notifs-deep">rappels</span>.
                 En quelques secondes. Sur mobile. Pour étudiants, adultes en reconversion, et tous ceux qui veulent vraiment apprendre.
               </p>
               <div className="mt-8 flex flex-col items-start gap-4">
@@ -388,22 +395,6 @@ export default function Home() {
                 <div
                   aria-hidden
                   className="absolute -inset-8 rounded-[48px] bg-gradient-to-br from-memovisuel-tint via-white to-quiz-tint blur-2xl opacity-70"
-                />
-                <span
-                  aria-hidden
-                  className="absolute -left-3 top-6 h-3 w-3 rounded-full bg-memovisuel shadow-soft"
-                />
-                <span
-                  aria-hidden
-                  className="absolute right-6 -top-3 h-2.5 w-2.5 rounded-full bg-hangman shadow-soft"
-                />
-                <span
-                  aria-hidden
-                  className="absolute -right-2 bottom-16 h-3 w-3 rounded-full bg-bingo shadow-soft"
-                />
-                <span
-                  aria-hidden
-                  className="absolute -bottom-2 left-12 h-2.5 w-2.5 rounded-full bg-quiz shadow-soft"
                 />
                 <div className="relative grid grid-cols-6 gap-3">
                   <div className="col-span-4 col-start-1 row-start-1">
@@ -598,10 +589,19 @@ export default function Home() {
                 Pas un chat.
               </h2>
               <p className="mt-5 text-text-body">
-                Lance un Mémo structuré sur n’importe quoi — La Renaissance, les protocoles réseau, le Système solaire, le code de la route. Revizio te renvoie un dossier prêt à réviser : synthèse, concepts clés, dates, pièges, ressources, comparaisons. Enrichi par le web.
+                Lance un{" "}
+                <span className="font-semibold text-memostruct-deep">
+                  Mémo structuré
+                </span>{" "}
+                sur n’importe quoi — La Renaissance, les protocoles réseau, le Système solaire, le code de la route. Revizio te renvoie un dossier prêt à réviser : synthèse, concepts clés, dates, pièges, ressources, comparaisons. Enrichi par le web.
               </p>
               <p className="mt-4 text-text-body">
-                Tu préfères te tester ? Demande un Quiz. Ou un Examen blanc noté sur 20, avec correction détaillée pour chaque question.
+                Tu préfères te tester ? Demande un{" "}
+                <span className="font-semibold text-quiz-deep">Quiz</span>. Ou un{" "}
+                <span className="font-semibold text-exam-deep">
+                  Examen blanc
+                </span>{" "}
+                noté sur 20, avec correction détaillée pour chaque question.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="inline-flex items-center rounded-full bg-memostruct-tintStrong px-3 py-1 text-xs font-semibold text-memostruct-deep">
@@ -628,18 +628,6 @@ export default function Home() {
               <div
                 aria-hidden
                 className="absolute -inset-6 rounded-[40px] bg-gradient-to-br from-memostruct-tint via-white to-exam-tint blur-2xl opacity-80"
-              />
-              <span
-                aria-hidden
-                className="absolute -left-3 top-8 h-3 w-3 rounded-full bg-memostruct shadow-soft"
-              />
-              <span
-                aria-hidden
-                className="absolute -right-2 bottom-16 h-3 w-3 rounded-full bg-exam shadow-soft"
-              />
-              <span
-                aria-hidden
-                className="absolute right-1/3 -top-3 h-2.5 w-2.5 rounded-full bg-quiz shadow-soft"
               />
               <div className="relative grid grid-cols-2 gap-4">
                 <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-card ring-1 ring-memostruct/15">
