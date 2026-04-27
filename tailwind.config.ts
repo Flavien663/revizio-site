@@ -47,6 +47,63 @@ const config: Config = {
         lavender: "#A684FF",
         sky: "#6BAAD9",
         mint: "#5AB7A0",
+        // Per-tool palettes (mirror app/expo theme — see doc/website-revamp/app-design-tokens.md)
+        hangman: {
+          tint: "#FEF3E6",
+          tintStrong: "#FED7AA",
+          DEFAULT: "#F97316",
+          deep: "#C2410C",
+          ink: "#7C2D12",
+        },
+        crossword: {
+          tint: "#E0F2FE",
+          tintStrong: "#BAE6FD",
+          DEFAULT: "#0284C7",
+          deep: "#075985",
+          ink: "#0C4A6E",
+        },
+        bingo: {
+          tint: "#ECFDF5",
+          tintStrong: "#A7F3D0",
+          DEFAULT: "#059669",
+          deep: "#065F46",
+          ink: "#064E3B",
+        },
+        memovisuel: {
+          tint: "#F5F3FF",
+          tintStrong: "#DDD6FE",
+          DEFAULT: "#7C3AED",
+          deep: "#5B21B6",
+          ink: "#2E1065",
+        },
+        memostruct: {
+          tint: "#FFE4E6",
+          tintStrong: "#FECDD3",
+          DEFAULT: "#BE123C",
+          deep: "#881337",
+          ink: "#4C0519",
+        },
+        quiz: {
+          tint: "#E0F2FE",
+          tintStrong: "#BAE6FD",
+          DEFAULT: "#0284C7",
+          deep: "#075985",
+          ink: "#0C4A6E",
+        },
+        exam: {
+          tint: "#F0FDFA",
+          tintStrong: "#99F6E4",
+          DEFAULT: "#115E59",
+          deep: "#134E4A",
+          ink: "#042F2E",
+        },
+        notifs: {
+          tint: "#DBEAFE",
+          tintStrong: "#BFDBFE",
+          DEFAULT: "#1E3A8A",
+          deep: "#172554",
+          ink: "#172554",
+        },
         // legacy aliases (backward safety)
         primary: {
           DEFAULT: "#326BDE",

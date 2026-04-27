@@ -192,7 +192,7 @@ const categories: Category[] = [
     items: [
       {
         q: "Sur quels appareils Revizio fonctionne ?",
-        a: "iOS et Android. L’expérience complète est sur mobile.",
+        a: "Pour l’instant sur iOS uniquement. La version Android arrive bientôt. L’expérience complète est sur mobile.",
       },
       {
         q: "Faut-il une connexion internet ?",

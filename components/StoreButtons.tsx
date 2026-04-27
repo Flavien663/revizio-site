@@ -21,10 +21,10 @@ export function StoreButtons({
       ? "bg-ink text-white hover:bg-[#1c3657]"
       : "bg-white text-ink border border-line hover:border-accent";
 
-  const secondary =
+  const playSoonBase =
     variant === "dark"
-      ? "bg-white text-ink border border-line hover:border-accent"
-      : "bg-ink/5 text-ink border border-line hover:border-accent";
+      ? "bg-white/70 text-ink/70 border border-line"
+      : "bg-ink/5 text-ink/70 border border-line";
 
   return (
     <div
@@ -34,6 +34,8 @@ export function StoreButtons({
     >
       <a
         href={site.appStoreUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="Télécharger Revizio sur l’App Store"
         className={`${base} ${dimensions} ${primary}`}
       >
@@ -55,12 +57,12 @@ export function StoreButtons({
         </span>
       </a>
 
-      <a
-        href={site.playStoreUrl}
-        aria-label="Télécharger Revizio sur Google Play"
-        className={`${base} ${dimensions} ${secondary}`}
+      <div
+        role="note"
+        aria-label="Application Android bientôt disponible"
+        className={`${base} ${dimensions} ${playSoonBase} relative cursor-default select-none`}
       >
-        <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0" aria-hidden>
+        <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0 opacity-60" aria-hidden>
           <path d="M3.6 2.3c-.4.3-.6.8-.6 1.5v16.4c0 .7.2 1.2.6 1.5l9.1-9.7L3.6 2.3Z" fill="#34A853" />
           <path d="m17.2 12.9 2.9-1.7c.9-.5.9-1.4 0-1.9l-2.9-1.7-3.2 3.4 3.2 3.3Z" fill="#FBBC04" />
           <path d="M12.7 12 3.6 21.7c.4.4 1 .4 1.7 0l11-6.4-3.6-3.3Z" fill="#EA4335" />
@@ -68,13 +70,16 @@ export function StoreButtons({
         </svg>
         <span className="flex flex-col items-start leading-tight">
           <span className="text-[10px] uppercase tracking-wider opacity-70">
-            Disponible sur
+            Android — bientôt
           </span>
           <span className={`${isLg ? "text-base" : "text-sm"} font-semibold`}>
             Google Play
           </span>
         </span>
-      </a>
+        <span className="ml-1 inline-flex items-center rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-deep">
+          Bientôt
+        </span>
+      </div>
     </div>
   );
 }

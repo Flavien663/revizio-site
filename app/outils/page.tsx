@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   },
 };
 
+type ToolPalette = {
+  eyebrow: string;
+  tierPill: string;
+  frameBg: string;
+  frameRing: string;
+  glow: string;
+};
+
 type Tool = {
   slug: string;
   group: string;
@@ -36,6 +44,7 @@ type Tool = {
   deliverable: string;
   image: any;
   alt: string;
+  palette: ToolPalette;
 };
 
 const tools: Tool[] = [
@@ -50,6 +59,13 @@ const tools: Tool[] = [
     deliverable: "Une fiche structurée, consultable et ré-utilisable dans tes outils suivants.",
     image: heroScan,
     alt: "Mémo visuel généré dans Revizio",
+    palette: {
+      eyebrow: "text-memovisuel-deep",
+      tierPill: "bg-memovisuel-tintStrong text-memovisuel-deep",
+      frameBg: "bg-memovisuel-tint",
+      frameRing: "ring-1 ring-memovisuel/20",
+      glow: "from-memovisuel-tint to-memovisuel-tintStrong",
+    },
   },
   {
     slug: "memo-structure",
@@ -62,6 +78,13 @@ const tools: Tool[] = [
     deliverable: "Un dossier long-format, en sections nettes, archivable dans Mes savoirs.",
     image: featureMemoStructured,
     alt: "Mémo structuré Revizio",
+    palette: {
+      eyebrow: "text-memostruct-deep",
+      tierPill: "bg-memostruct-tintStrong text-memostruct-deep",
+      frameBg: "bg-memostruct-tint",
+      frameRing: "ring-1 ring-memostruct/20",
+      glow: "from-memostruct-tint to-memostruct-tintStrong",
+    },
   },
   {
     slug: "quiz",
@@ -74,6 +97,13 @@ const tools: Tool[] = [
     deliverable: "Une banque de 30 questions replayable, avec score et correction.",
     image: heroQuiz,
     alt: "Quiz en cours dans Revizio",
+    palette: {
+      eyebrow: "text-quiz-deep",
+      tierPill: "bg-quiz-tintStrong text-quiz-deep",
+      frameBg: "bg-quiz-tint",
+      frameRing: "ring-1 ring-quiz/20",
+      glow: "from-quiz-tint to-quiz-tintStrong",
+    },
   },
   {
     slug: "examen-blanc",
@@ -86,6 +116,13 @@ const tools: Tool[] = [
     deliverable: "Une note sur 20, un retour par question, un plan pour progresser.",
     image: featureExam,
     alt: "Examen blanc noté sur 20 dans Revizio",
+    palette: {
+      eyebrow: "text-exam-deep",
+      tierPill: "bg-exam-tintStrong text-exam-deep",
+      frameBg: "bg-exam-tint",
+      frameRing: "ring-1 ring-exam/20",
+      glow: "from-exam-tint to-exam-tintStrong",
+    },
   },
   {
     slug: "rappels-intelligents",
@@ -98,6 +135,13 @@ const tools: Tool[] = [
     deliverable: "Une série de rappels sur ton sujet, trois par jour, sur dix jours.",
     image: featureNotif,
     alt: "Rappels intelligents Revizio",
+    palette: {
+      eyebrow: "text-notifs-deep",
+      tierPill: "bg-notifs-tintStrong text-notifs-deep",
+      frameBg: "bg-notifs-tint",
+      frameRing: "ring-1 ring-notifs/20",
+      glow: "from-notifs-tint to-notifs-tintStrong",
+    },
   },
   {
     slug: "pendu",
@@ -110,6 +154,13 @@ const tools: Tool[] = [
     deliverable: "Un pack de 10 parties de pendu.",
     image: featureHangman,
     alt: "Pendu Revizio",
+    palette: {
+      eyebrow: "text-hangman-deep",
+      tierPill: "bg-hangman-tintStrong text-hangman-deep",
+      frameBg: "bg-hangman-tint",
+      frameRing: "ring-1 ring-hangman/20",
+      glow: "from-hangman-tint to-hangman-tintStrong",
+    },
   },
   {
     slug: "bingo",
@@ -122,6 +173,13 @@ const tools: Tool[] = [
     deliverable: "Trois grilles jouables avec appels dynamiques.",
     image: featureBingo,
     alt: "Bingo Revizio",
+    palette: {
+      eyebrow: "text-bingo-deep",
+      tierPill: "bg-bingo-tintStrong text-bingo-deep",
+      frameBg: "bg-bingo-tint",
+      frameRing: "ring-1 ring-bingo/20",
+      glow: "from-bingo-tint to-bingo-tintStrong",
+    },
   },
   {
     slug: "mots-croises",
@@ -134,6 +192,13 @@ const tools: Tool[] = [
     deliverable: "Une grille + ses définitions + ton score.",
     image: featureCrossword,
     alt: "Mots croisés Revizio",
+    palette: {
+      eyebrow: "text-crossword-deep",
+      tierPill: "bg-crossword-tintStrong text-crossword-deep",
+      frameBg: "bg-crossword-tint",
+      frameRing: "ring-1 ring-crossword/20",
+      glow: "from-crossword-tint to-crossword-tintStrong",
+    },
   },
 ];
 
@@ -212,7 +277,9 @@ export default function OutilsPage() {
                     idx % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent-deep">
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-[0.14em] ${t.palette.eyebrow}`}
+                  >
                     {t.group}
                   </p>
                   <h3 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
@@ -222,7 +289,11 @@ export default function OutilsPage() {
                   <p className="mt-4 text-text-body">{t.body}</p>
 
                   <div className="mt-6 flex flex-wrap gap-2">
-                    <span className="pill-accent">{t.tier}</span>
+                    <span
+                      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${t.palette.tierPill}`}
+                    >
+                      {t.tier}
+                    </span>
                     <span className="pill">Coût : {t.cost}</span>
                   </div>
 
@@ -241,9 +312,11 @@ export default function OutilsPage() {
                   <div className="relative mx-auto max-w-md">
                     <div
                       aria-hidden
-                      className="absolute -inset-5 rounded-[40px] bg-gradient-to-br from-accent-soft to-background-strong blur-2xl opacity-60"
+                      className={`absolute -inset-5 rounded-[40px] bg-gradient-to-br ${t.palette.glow} blur-2xl opacity-60`}
                     />
-                    <div className="relative flex items-center justify-center overflow-hidden rounded-3xl border border-line bg-white shadow-card">
+                    <div
+                      className={`relative flex items-center justify-center overflow-hidden rounded-3xl border border-line shadow-card ${t.palette.frameBg} ${t.palette.frameRing}`}
+                    >
                       <Image
                         src={t.image}
                         alt={t.alt}

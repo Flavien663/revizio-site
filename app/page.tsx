@@ -64,13 +64,31 @@ const pillars = [
   },
 ];
 
-const tools = [
+type ToolPalette = {
+  imageBg: string;
+  pill: string;
+  ringHover: string;
+};
+
+const tools: Array<{
+  name: string;
+  tier: string;
+  body: string;
+  image: any;
+  alt: string;
+  palette: ToolPalette;
+}> = [
   {
     name: "Mémo visuel",
     tier: "Premium et Max",
     body: "Photographie un document, obtiens une fiche claire avec points clés, définitions et pièges.",
     image: heroScan,
     alt: "Scan de cours transformé en fiche Revizio",
+    palette: {
+      imageBg: "bg-memovisuel-tint",
+      pill: "bg-memovisuel-tintStrong text-memovisuel-deep",
+      ringHover: "hover:ring-2 hover:ring-memovisuel/40",
+    },
   },
   {
     name: "Mémo structuré",
@@ -78,6 +96,11 @@ const tools = [
     body: "Un dossier complet sur ton sujet : synthèse, concepts, dates, pièges, ressources. Enrichi par le web.",
     image: featureMemoStructured,
     alt: "Mémo structuré Revizio",
+    palette: {
+      imageBg: "bg-memostruct-tint",
+      pill: "bg-memostruct-tintStrong text-memostruct-deep",
+      ringHover: "hover:ring-2 hover:ring-memostruct/40",
+    },
   },
   {
     name: "Quiz",
@@ -85,6 +108,11 @@ const tools = [
     body: "30 questions réparties en trois sessions, avec correction pédagogique pour chaque réponse.",
     image: heroQuiz,
     alt: "Quiz Revizio en cours",
+    palette: {
+      imageBg: "bg-quiz-tint",
+      pill: "bg-quiz-tintStrong text-quiz-deep",
+      ringHover: "hover:ring-2 hover:ring-quiz/40",
+    },
   },
   {
     name: "Examen blanc",
@@ -92,6 +120,11 @@ const tools = [
     body: "10 questions sérieuses, note sur 20, correction détaillée avec bilan et conseils de progression.",
     image: featureExam,
     alt: "Examen blanc noté sur 20 dans Revizio",
+    palette: {
+      imageBg: "bg-exam-tint",
+      pill: "bg-exam-tintStrong text-exam-deep",
+      ringHover: "hover:ring-2 hover:ring-exam/40",
+    },
   },
   {
     name: "Rappels intelligents",
@@ -99,6 +132,11 @@ const tools = [
     body: "30 micro-notions sur ton sujet, livrées à tes horaires sur environ dix jours. Zéro spam.",
     image: featureNotif,
     alt: "Rappels intelligents Revizio",
+    palette: {
+      imageBg: "bg-notifs-tint",
+      pill: "bg-notifs-tintStrong text-notifs-deep",
+      ringHover: "hover:ring-2 hover:ring-notifs/40",
+    },
   },
   {
     name: "Pendu",
@@ -106,6 +144,11 @@ const tools = [
     body: "Dix mots à deviner avec indice sur ton sujet. Cinq minutes, un vocabulaire solide.",
     image: featureHangman,
     alt: "Pendu Revizio",
+    palette: {
+      imageBg: "bg-hangman-tint",
+      pill: "bg-hangman-tintStrong text-hangman-deep",
+      ringHover: "hover:ring-2 hover:ring-hangman/40",
+    },
   },
   {
     name: "Bingo",
@@ -113,6 +156,11 @@ const tools = [
     body: "Trois grilles 3×3, neuf termes clés par grille. Mémorise en jouant.",
     image: featureBingo,
     alt: "Bingo Revizio",
+    palette: {
+      imageBg: "bg-bingo-tint",
+      pill: "bg-bingo-tintStrong text-bingo-deep",
+      ringHover: "hover:ring-2 hover:ring-bingo/40",
+    },
   },
   {
     name: "Mots croisés",
@@ -120,6 +168,11 @@ const tools = [
     body: "Une grille générée sur ton sujet, avec définitions horizontales et verticales.",
     image: featureCrossword,
     alt: "Mots croisés Revizio",
+    palette: {
+      imageBg: "bg-crossword-tint",
+      pill: "bg-crossword-tintStrong text-crossword-deep",
+      ringHover: "hover:ring-2 hover:ring-crossword/40",
+    },
   },
 ];
 
@@ -188,7 +241,7 @@ const mobileAppLd = {
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   name: site.name,
-  operatingSystem: "iOS, Android",
+  operatingSystem: "iOS",
   applicationCategory: "EducationApplication",
   description: site.description,
   inLanguage: site.language,
@@ -224,7 +277,7 @@ export default function Home() {
           <div className="grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-3">
-                <span className="pill-accent">Nouveau — disponible iOS et Android</span>
+                <span className="pill-accent">Disponible sur iOS — Android bientôt</span>
               </div>
               <h1 className="mt-5 text-5xl font-semibold leading-[1.02] tracking-tight text-ink sm:text-6xl md:text-7xl">
                 Comprends.
@@ -388,8 +441,11 @@ export default function Home() {
 
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {tools.map((t) => (
-              <article key={t.name} className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-transform hover:-translate-y-1">
-                <div className="flex aspect-[3/4] items-center justify-center overflow-hidden bg-surface-soft">
+              <article
+                key={t.name}
+                className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-all hover:-translate-y-1 ${t.palette.ringHover}`}
+              >
+                <div className={`flex aspect-[3/4] items-center justify-center overflow-hidden ${t.palette.imageBg}`}>
                   <Image
                     src={t.image}
                     alt={t.alt}
@@ -405,7 +461,11 @@ export default function Home() {
                     <h3 className="text-base font-semibold text-ink">
                       {t.name}
                     </h3>
-                    <span className="pill shrink-0 !py-0.5 text-[10px]">{t.tier}</span>
+                    <span
+                      className={`shrink-0 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold ${t.palette.pill}`}
+                    >
+                      {t.tier}
+                    </span>
                   </div>
                   <p className="mt-2 text-sm text-text-body">{t.body}</p>
                 </div>
@@ -615,7 +675,7 @@ export default function Home() {
               Choisis un sujet. Revizio fait le reste.
             </h2>
             <p className="mt-5 text-text-body">
-              Disponible sur iOS et Android. Tu peux commencer en mode invité, sans mot de passe, en moins d’une minute.
+              Disponible sur iOS. La version Android arrive bientôt. Tu peux commencer en mode invité, sans mot de passe, en moins d’une minute.
             </p>
             <div className="mt-8 flex justify-center">
               <StoreButtons size="lg" />

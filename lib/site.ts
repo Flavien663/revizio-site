@@ -9,8 +9,9 @@ export const site = {
   legalAddress: "31700 Blagnac, France",
   legalCountry: "France",
   supportDelay: "sous 3 jours ouvrés",
-  appStoreUrl: "APP_STORE_URL",
-  playStoreUrl: "PLAY_STORE_URL",
+  appStoreUrl: "https://apps.apple.com/us/app/revizio/id6761366726",
+  playStoreUrl: null as string | null,
+  androidComingSoon: true,
   lastUpdated: "19/04/2026",
   locale: "fr_FR",
   language: "fr",
@@ -18,7 +19,7 @@ export const site = {
   description:
     "Revizio transforme un sujet en fiche, quiz, examen ou rappels intelligents. Un compagnon d’apprentissage premium pour étudiants, adultes en reconversion et curieux.",
   shortDescription:
-    "Un sujet, une fiche, un quiz ou un examen — en quelques secondes. Sur iOS et Android.",
+    "Un sujet, une fiche, un quiz ou un examen — en quelques secondes. Sur iOS. Bientôt sur Android.",
   keywords: [
     "application apprentissage",
     "app révision",

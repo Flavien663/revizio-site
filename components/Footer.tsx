@@ -24,7 +24,7 @@ export function Footer() {
               Un sujet, une fiche, un quiz ou un examen — en quelques secondes. Le compagnon d’apprentissage premium pour tous ceux qui veulent vraiment retenir.
             </p>
             <p className="mt-4 text-xs text-text-muted">
-              Disponible sur iOS et Android.
+              Disponible sur iOS. Bientôt sur Android.
             </p>
           </div>
           <div className="md:col-span-3">

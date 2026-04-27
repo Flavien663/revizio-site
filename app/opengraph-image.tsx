@@ -75,7 +75,7 @@ export default function OpengraphImage() {
           <div style={{ display: "flex", gap: "22px" }}>
             <span>iOS</span>
             <span style={{ color: "#C5D0DD" }}>·</span>
-            <span>Android</span>
+            <span>Android — bientôt</span>
             <span style={{ color: "#C5D0DD" }}>·</span>
             <span>Sans publicité</span>
           </div>
