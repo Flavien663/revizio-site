@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { site } from "@/lib/site";
 import { getDict, type Lang } from "@/lib/i18n";
 
@@ -14,16 +13,9 @@ export function Header({ lang }: Props) {
       <div className="container-x flex h-16 items-center justify-between">
         <Link
           href={prefix || "/"}
-          className="flex items-center gap-2 text-base font-semibold tracking-tight text-ink"
+          className="text-base font-semibold tracking-tight text-ink"
           aria-label={`${site.name} — ${t.footer.home}`}
         >
-          <Image
-            src="/images/logo-revizio.webp"
-            alt=""
-            width={28}
-            height={28}
-            className="h-7 w-7 rounded-lg object-contain"
-          />
           {site.name}
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
@@ -44,6 +36,12 @@ export function Header({ lang }: Props) {
             className="text-text-muted hover:text-ink"
           >
             {t.nav.plans}
+          </Link>
+          <Link
+            href={`${prefix}/support`}
+            className="text-text-muted hover:text-ink"
+          >
+            {t.footer.support}
           </Link>
         </nav>
         <a
