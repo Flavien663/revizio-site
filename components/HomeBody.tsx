@@ -35,15 +35,7 @@ const games: Array<{
   { color: "memo", key: "memo", src: "/images/games/memo/mascot.webp" },
 ];
 
-const tools: Array<{ key: ToolKey; isIncluded: boolean }> = [
-  { key: "decoder", isIncluded: false },
-  { key: "memo", isIncluded: false },
-  { key: "exam", isIncluded: false },
-  { key: "courseQuiz", isIncluded: false },
-  { key: "smartNotifs", isIncluded: false },
-  { key: "smartPlan", isIncluded: true },
-  { key: "customAdventure", isIncluded: false },
-];
+const tools: ToolKey[] = ["decoder", "memo", "exam", "smartNotifs", "customAdventure"];
 
 const mobileAppLd = {
   "@context": "https://schema.org",
@@ -73,9 +65,32 @@ const mobileAppLd = {
   image: `${site.url}/opengraph-image`,
 };
 
+const stats = [
+  { value: "180+", labelFr: "niveaux d'aventure", labelEn: "adventure levels" },
+  { value: "8+", labelFr: "jeux IA", labelEn: "AI games" },
+  { value: "6+", labelFr: "mondes à explorer", labelEn: "worlds to explore" },
+  { value: "5+", labelFr: "outils IA", labelEn: "AI tools" },
+];
+
+const marqueeColors: Record<typeof games[number]["color"], string> = {
+  quiz: "bg-quiz-tint text-quiz-deep",
+  hangman: "bg-hangman-tint text-hangman-deep",
+  bingo: "bg-bingo-tint text-bingo-deep",
+  crossword: "bg-crossword-tint text-crossword-deep",
+  "true-false": "bg-true-false-tint text-true-false-deep",
+  tri: "bg-tri-tint text-tri-deep",
+  chrono: "bg-chrono-tint text-chrono-deep",
+  memo: "bg-memo-tint text-memo-deep",
+};
+
 export function HomeBody({ lang }: Props) {
   const t = getDict(lang);
   const prefix = lang === "en" ? "/en" : "";
+
+  const marqueeItems = games.map((g) => ({
+    label: t.games.items[g.key].name,
+    cls: marqueeColors[g.color],
+  }));
 
   return (
     <>
@@ -88,29 +103,31 @@ export function HomeBody({ lang }: Props) {
 
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-accent" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 gradient-bg-hero" />
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-quiz/15 blur-3xl" />
-          <div className="absolute right-0 top-1/3 h-72 w-72 rounded-full bg-bingo/15 blur-3xl" />
-          <div className="absolute -bottom-16 left-1/3 h-64 w-64 rounded-full bg-memo/12 blur-3xl" />
+          <div className="absolute -left-20 top-16 h-72 w-72 rounded-full bg-quiz/20 blur-3xl animate-pulse-soft" />
+          <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-bingo/20 blur-3xl animate-pulse-soft" style={{ animationDelay: "1.5s" }} />
+          <div className="absolute -bottom-16 left-1/3 h-72 w-72 rounded-full bg-memo/15 blur-3xl animate-pulse-soft" style={{ animationDelay: "3s" }} />
         </div>
-        <div className="container-x relative pt-14 pb-16 sm:pt-20 sm:pb-24">
-          <div className="grid items-center gap-12 lg:grid-cols-12">
+        <div className="container-x relative pt-14 pb-14 sm:pt-20 sm:pb-20">
+          <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <span className="pill-accent">{t.hero.badge}</span>
-              <h1 className="mt-5 text-5xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-6xl md:text-7xl">
+              <span className="pill-glow">{t.hero.badge}</span>
+              <h1 className="mt-6 text-[44px] font-semibold leading-[1.02] tracking-tight text-ink sm:text-6xl md:text-[80px]">
                 {t.hero.headlineLine1}
                 <br />
-                <span className="text-accent-deep">{t.hero.headlineLine2}</span>
+                <span className="gradient-text">{t.hero.headlineLine2}</span>
               </h1>
-              <p className="mt-6 max-w-xl text-lg text-text-body sm:text-xl">{t.hero.subtitle}</p>
+              <p className="mt-6 max-w-xl text-lg text-text-body sm:text-xl">
+                {t.hero.subtitle}
+              </p>
               <div className="mt-8 flex flex-col items-start gap-4">
                 <StoreButtons size="lg" lang={lang} />
                 <Link
                   href={`${prefix}/#games`}
                   className="text-sm font-medium text-text-muted underline-offset-4 hover:text-ink hover:underline"
                 >
-                  {t.hero.ctaSecondary}
+                  {t.hero.ctaSecondary} ↓
                 </Link>
               </div>
             </div>
@@ -118,32 +135,126 @@ export function HomeBody({ lang }: Props) {
               <div className="relative mx-auto max-w-md">
                 <div
                   aria-hidden
-                  className="absolute -inset-8 rounded-[48px] bg-gradient-to-br from-accent-soft via-white to-bingo-tint blur-2xl opacity-70"
+                  className="absolute -inset-10 rounded-[60px] bg-gradient-to-br from-accent/30 via-bingo/20 to-quiz/20 blur-3xl opacity-80"
                 />
-                <Image
-                  src="/images/mascot-hero.webp"
-                  alt=""
-                  width={560}
-                  height={560}
-                  sizes="(max-width: 1024px) 70vw, 420px"
-                  className="relative mx-auto h-auto w-full"
-                  priority
-                />
+                <div className="relative animate-float-slow">
+                  <Image
+                    src="/images/mascot-hero.webp"
+                    alt=""
+                    width={620}
+                    height={620}
+                    sizes="(max-width: 1024px) 70vw, 460px"
+                    className="mx-auto h-auto w-full drop-shadow-[0_30px_40px_rgba(15,17,21,0.18)]"
+                    priority
+                  />
+                </div>
+                {/* Floating mini-mascots */}
+                <div
+                  aria-hidden
+                  className="absolute -left-2 top-10 hidden sm:block animate-float"
+                  style={{ animationDelay: "0.5s" }}
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-bingo-tintStrong shadow-card">
+                    <Image
+                      src="/images/games/bingo/mascot.webp"
+                      alt=""
+                      width={64}
+                      height={64}
+                      className="h-12 w-12 object-contain"
+                    />
+                  </div>
+                </div>
+                <div
+                  aria-hidden
+                  className="absolute -right-2 top-1/3 hidden sm:block animate-float"
+                  style={{ animationDelay: "1.2s" }}
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-quiz-tintStrong shadow-card">
+                    <Image
+                      src="/images/games/quiz/mascot.webp"
+                      alt=""
+                      width={64}
+                      height={64}
+                      className="h-12 w-12 object-contain"
+                    />
+                  </div>
+                </div>
+                <div
+                  aria-hidden
+                  className="absolute -bottom-2 right-1/4 hidden sm:block animate-float"
+                  style={{ animationDelay: "2s" }}
+                >
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-memo-tintStrong shadow-card">
+                    <Image
+                      src="/images/games/memo/mascot.webp"
+                      alt=""
+                      width={64}
+                      height={64}
+                      className="h-12 w-12 object-contain"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* GAMES */}
-      <section id="games" className="border-y border-line bg-white py-20 sm:py-24">
+      {/* STATS STRIP */}
+      <section className="relative border-y border-line bg-ink overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-40"
+          style={{
+            background:
+              "radial-gradient(circle at 15% 50%, rgba(242,107,58,0.35), transparent 40%), radial-gradient(circle at 85% 50%, rgba(225,29,122,0.25), transparent 40%)",
+          }}
+        />
+        <div className="container-x relative py-10 sm:py-12">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.value} className="text-center sm:text-left">
+                <p className="text-4xl font-semibold tracking-tight text-white sm:text-5xl gradient-text">
+                  {s.value}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-wider text-white/70 sm:text-sm">
+                  {lang === "fr" ? s.labelFr : s.labelEn}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE — game names scrolling */}
+      <section
+        aria-hidden
+        className="border-b border-line bg-white py-5 overflow-hidden"
+      >
+        <div className="relative flex whitespace-nowrap">
+          <div className="flex shrink-0 animate-marquee gap-3 pr-3">
+            {[...marqueeItems, ...marqueeItems].map((m, i) => (
+              <span
+                key={`a-${i}`}
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${m.cls}`}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
+                {m.label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GAMES VITRINE */}
+      <section id="games" className="bg-white py-20 sm:py-24">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{t.games.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.games.title}
             </h2>
-            <p className="mt-4 text-text-body">{t.games.intro}</p>
+            <p className="mt-4 text-text-body sm:text-lg">{t.games.intro}</p>
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {games.map((g) => (
@@ -162,14 +273,19 @@ export function HomeBody({ lang }: Props) {
       </section>
 
       {/* ADVENTURE */}
-      <section id="adventure" className="py-20 sm:py-28">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
+      <section id="adventure" className="relative overflow-hidden border-y border-line bg-surface-soft py-20 sm:py-28">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-20 top-10 h-80 w-80 rounded-full bg-culture/15 blur-3xl" />
+          <div className="absolute -left-16 bottom-10 h-72 w-72 rounded-full bg-words/15 blur-3xl" />
+          <div className="absolute right-1/3 bottom-0 h-64 w-64 rounded-full bg-logic/10 blur-3xl" />
+        </div>
+        <div className="container-x relative">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow mb-3">{t.adventure.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.adventure.title}
             </h2>
-            <p className="mt-4 text-text-body">{t.adventure.intro}</p>
+            <p className="mt-4 text-text-body sm:text-lg">{t.adventure.intro}</p>
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             <WorldCard
@@ -191,98 +307,90 @@ export function HomeBody({ lang }: Props) {
               levelsLabel={t.adventure.levelsLabel}
             />
           </div>
-          <p className="mt-6 text-center text-sm text-text-muted">{t.adventure.moreSoon}</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-text-muted">
-            <span>{t.adventure.starsCaption}</span>
-            <span aria-hidden>·</span>
-            <span>{t.adventure.chestsCaption}</span>
-            <span aria-hidden>·</span>
-            <span>{t.adventure.bossCaption}</span>
-          </div>
-          <p className="mt-6 text-center">
-            <span className="inline-flex items-center rounded-full bg-success-soft px-3 py-1 text-xs font-semibold text-success">
+          <p className="mt-10 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink shadow-card">
+              <span className="h-2 w-2 rounded-full bg-success" />
               {t.adventure.freeBadge}
             </span>
           </p>
         </div>
       </section>
 
-      {/* TOOLS */}
-      <section className="border-y border-line bg-surface-soft py-20 sm:py-24">
+      {/* TOOLS IA */}
+      <section className="bg-white py-20 sm:py-24">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{t.tools.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.tools.title}
             </h2>
-            <p className="mt-4 text-text-body">{t.tools.intro}</p>
+            <p className="mt-4 text-text-body sm:text-lg">{t.tools.intro}</p>
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {tools.map((tl) => (
+            {tools.map((k) => (
               <ToolCard
-                key={tl.key}
-                name={t.tools.items[tl.key].name}
-                tagline={t.tools.items[tl.key].tagline}
-                cost={t.tools.items[tl.key].cost}
-                isIncluded={tl.isIncluded}
-                includedLabel={t.tools.includedLabel}
+                key={k}
+                name={t.tools.items[k].name}
+                tagline={t.tools.items[k].tagline}
+                cost={t.tools.items[k].cost}
                 brainsLabel={t.tools.brainsLabel}
+                includedLabel=""
+                isIncluded={false}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* PROGRESSION */}
-      <section className="py-20 sm:py-24">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow mb-3">{t.progression.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
-              {t.progression.title}
-            </h2>
-          </div>
-          <div className="mx-auto mt-14 grid max-w-4xl gap-5 md:grid-cols-3">
-            {(["xp", "lives", "streak"] as const).map((k) => (
-              <div key={k} className="card text-left">
-                <p className="text-xs font-semibold uppercase tracking-wider text-accent-deep">
-                  {t.progression.stats[k].label}
-                </p>
-                <p className="mt-3 text-text-body">{t.progression.stats[k].body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* DAILY + CUSTOM */}
-      <section className="border-y border-line bg-white py-20 sm:py-24">
+      <section className="border-y border-line bg-background py-20 sm:py-24">
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{t.daily.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.daily.title}
             </h2>
           </div>
           <div className="mt-14 grid gap-5 md:grid-cols-2">
-            <article className="overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-white via-white to-accent-soft/40 p-8 shadow-card">
-              <div className="flex items-start gap-5">
+            <article className="group relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-white via-white to-accent-soft p-8 shadow-card transition-transform hover:-translate-y-1">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-accent/20 blur-2xl"
+              />
+              <div className="relative flex items-start gap-5">
                 <Image
                   src="/images/daily-mascot.webp"
                   alt=""
-                  width={140}
-                  height={140}
-                  className="h-24 w-24 shrink-0 object-contain"
+                  width={160}
+                  height={160}
+                  className="h-28 w-28 shrink-0 object-contain animate-float-slow"
                 />
                 <div>
-                  <h3 className="text-xl font-semibold text-ink">{t.daily.daily.name}</h3>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-accent-soft px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-deep">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse-soft" />
+                    {lang === "fr" ? "Tous les jours" : "Every day"}
+                  </span>
+                  <h3 className="mt-2 text-2xl font-semibold text-ink">
+                    {t.daily.daily.name}
+                  </h3>
                   <p className="mt-2 text-sm text-text-body">{t.daily.daily.body}</p>
                 </div>
               </div>
             </article>
-            <article className="overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-white via-white to-quiz-tint p-8 shadow-card">
-              <h3 className="text-xl font-semibold text-ink">{t.daily.custom.name}</h3>
-              <p className="mt-2 text-sm text-text-body">{t.daily.custom.body}</p>
+            <article className="group relative overflow-hidden rounded-3xl border border-line bg-gradient-to-br from-white via-white to-quiz-tint p-8 shadow-card transition-transform hover:-translate-y-1">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -top-10 -right-10 h-40 w-40 rounded-full bg-quiz/20 blur-2xl"
+              />
+              <div className="relative">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-quiz-tintStrong px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-quiz-deep">
+                  {lang === "fr" ? "Quand tu veux" : "Whenever"}
+                </span>
+                <h3 className="mt-2 text-2xl font-semibold text-ink">
+                  {t.daily.custom.name}
+                </h3>
+                <p className="mt-2 text-sm text-text-body">{t.daily.custom.body}</p>
+              </div>
             </article>
           </div>
         </div>
@@ -293,7 +401,7 @@ export function HomeBody({ lang }: Props) {
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{t.plans.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.plans.title}
             </h2>
           </div>
@@ -317,13 +425,7 @@ export function HomeBody({ lang }: Props) {
               highlight
             />
           </div>
-          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-line bg-white p-6 shadow-card">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-deep">
-              {t.plans.explainer.title}
-            </p>
-            <p className="mt-2 text-sm text-text-body">{t.plans.explainer.body}</p>
-          </div>
-          <p className="mx-auto mt-6 max-w-3xl text-center text-xs text-text-muted">
+          <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-text-muted">
             {t.plans.fineprint}
           </p>
         </div>
@@ -334,13 +436,13 @@ export function HomeBody({ lang }: Props) {
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{t.trust.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.trust.title}
             </h2>
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.trust.items.map((it) => (
-              <div key={it.title} className="rounded-2xl border border-line bg-white p-6 shadow-card">
+              <div key={it.title} className="rounded-2xl border border-line bg-white p-6 shadow-card transition-transform hover:-translate-y-1">
                 <h3 className="text-base font-semibold text-ink">{it.title}</h3>
                 <p className="mt-2 text-sm text-text-body">{it.body}</p>
               </div>
@@ -354,7 +456,7 @@ export function HomeBody({ lang }: Props) {
         <div className="container-x">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-3">{t.faq.eyebrow}</p>
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl text-ink">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl text-ink">
               {t.faq.title}
             </h2>
           </div>
@@ -374,24 +476,26 @@ export function HomeBody({ lang }: Props) {
 
       {/* FINAL CTA */}
       <section id="download" className="relative overflow-hidden py-20 sm:py-28">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-radial-accent" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 gradient-bg-hero" />
         <div className="container-x relative">
-          <div className="mx-auto max-w-3xl rounded-[36px] border border-line bg-white p-10 text-center shadow-card sm:p-14">
+          <div className="mx-auto max-w-3xl rounded-[36px] border border-line bg-white p-10 text-center shadow-card sm:p-14 ring-glow-accent">
             <Image
               src="/images/mascot-hero.webp"
               alt=""
-              width={140}
-              height={140}
-              className="mx-auto h-28 w-28 object-contain"
+              width={160}
+              height={160}
+              className="mx-auto h-32 w-32 object-contain animate-float"
             />
             <h2 className="mt-6 text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
               {t.cta.title}
             </h2>
-            <p className="mt-5 text-text-body">{t.cta.body}</p>
+            <p className="mt-5 text-text-body sm:text-lg">{t.cta.body}</p>
             <div className="mt-8 flex justify-center">
               <StoreButtons size="lg" lang={lang} />
             </div>
-            <p className="mt-8 text-xs text-text-muted">{t.cta.supportLine(site.supportEmail)}</p>
+            <p className="mt-8 text-xs text-text-muted">
+              {t.cta.supportLine(site.supportEmail)}
+            </p>
           </div>
         </div>
       </section>

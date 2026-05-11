@@ -4,7 +4,7 @@ export const fr: Dict = {
   meta: {
     homeTitle: "Revizio — Apprends en jouant",
     homeDescription:
-      "8+ jeux IA générés depuis un thème ou un cours. Une aventure de plus de 180 niveaux à travers 6+ mondes. Un défi par jour. Sur iOS.",
+      "Tu choisis un sujet, on fabrique le jeu. 8+ jeux IA, plus de 180 niveaux d'aventure, un défi à relever chaque jour. Sur iOS.",
     privacyTitle: "Politique de confidentialité",
     termsTitle: "Conditions d'utilisation",
     supportTitle: "Support",
@@ -12,41 +12,37 @@ export const fr: Dict = {
   },
   nav: { games: "Jeux", adventure: "Aventure", plans: "Offres", download: "Télécharger" },
   hero: {
-    badge: "Sans publicité — sans tracking",
+    badge: "Sans pub. Sans tracking. Pour de vrai.",
     headlineLine1: "Apprends ce que tu veux.",
     headlineLine2: "En jouant.",
     subtitle:
-      "8+ jeux IA générés depuis un thème ou un cours. Une aventure de plus de 180 niveaux. Un défi par jour. Sur iOS.",
+      "Tu choisis un sujet. On fabrique le jeu. 8+ jeux IA, plus de 180 niveaux d'aventure, un défi à relever chaque jour.",
     ctaSecondary: "Voir les jeux",
   },
   games: {
-    eyebrow: "8+ jeux générés depuis ton thème",
+    eyebrow: "Tous tes sujets, version jeu",
     title: "Choisis un sujet. On fabrique le jeu.",
     intro:
-      "Chaque jeu se construit à la volée à partir d'un thème libre ou de l'un de tes cours.",
+      "Du quiz au pendu en passant par le mémo et le tri express, chaque jeu se construit à la volée sur ton thème.",
     cost: "1 cerveau",
     items: {
       quiz: { name: "Quiz", tagline: "Des questions sur n'importe quoi." },
       hangman: { name: "Pendu", tagline: "Des mots à deviner, avec indices." },
       bingo: { name: "Bingo", tagline: "Une grille de termes à entendre." },
-      crossword: { name: "Mots Croisés", tagline: "Une grille sur ton sujet." },
-      trueFalse: { name: "Vrai/Faux Rush", tagline: "Des affirmations, vrai ou faux, vite." },
-      tri: { name: "Tri Express", tagline: "Des cartes à ranger dans les bonnes catégories." },
-      chrono: { name: "Classement Chrono", tagline: "Des événements à remettre dans l'ordre." },
-      memo: { name: "Mémo Duo", tagline: "Des paires à retrouver." },
+      crossword: { name: "Mots Croisés", tagline: "Une grille bâtie sur ton thème." },
+      trueFalse: { name: "Vrai/Faux Rush", tagline: "Vrai ou faux, vite, sans réfléchir." },
+      tri: { name: "Tri Express", tagline: "Des cartes dans les bonnes cases." },
+      chrono: { name: "Classement Chrono", tagline: "Remets de l'ordre dans le temps." },
+      memo: { name: "Mémo Duo", tagline: "Retrouve les paires." },
     },
   },
   adventure: {
     eyebrow: "Une aventure de 180+ niveaux",
-    title: "Six mondes et plus. Des dizaines de niveaux chacun.",
+    title: "Plus de 6 mondes. À explorer un par un.",
     intro:
-      "Chaque niveau te rapporte de 1 à 3 étoiles selon ton score. Des coffres ponctuent la progression. Un boss attend en haut de chaque monde.",
+      "L'Aventure Revizio te fait traverser des mondes thématiques niveau après niveau. Chaque étoile décrochée te rapproche du suivant.",
     levelsLabel: "Des dizaines de niveaux",
     freeBadge: "Gratuit — tout le monde y a accès",
-    starsCaption: "1 à 3 étoiles par niveau",
-    chestsCaption: "Coffres réguliers",
-    bossCaption: "Un boss par monde",
-    moreSoon: "Et d'autres mondes en chantier.",
     worlds: {
       culture: { name: "Cap Culture", tagline: "Culture générale, de l'art au sport." },
       words: { name: "Forêt des Mots", tagline: "Vocabulaire, expressions, étymologies." },
@@ -54,91 +50,64 @@ export const fr: Dict = {
     },
   },
   tools: {
-    eyebrow: "Pour aller plus loin",
-    title: "5+ outils pour tes vraies révisions.",
+    eyebrow: "Va plus loin",
+    title: "5+ outils IA pour pousser plus fort.",
     intro:
-      "Réservés à Revizio Plus. Aperçu accessible à tous depuis l'app.",
-    includedLabel: "Inclus",
+      "Quand tu veux passer en mode révision sérieuse, les outils IA prennent le relais.",
     brainsLabel: (n) => `${n} cerveau${n > 1 ? "x" : ""}`,
     items: {
       decoder: {
         name: "Décodeur",
-        tagline: "Analyse une photo de cours et obtiens des widgets explicatifs.",
+        tagline: "Photographie un cours, obtiens des widgets clairs.",
         cost: "5",
       },
       memo: {
         name: "Mémo structuré",
-        tagline: "Une fiche riche multi-sections, prête à réviser.",
+        tagline: "Une fiche multi-sections, prête à réviser.",
         cost: "10",
       },
-      exam: { name: "Examen blanc", tagline: "Un quiz long format, noté.", cost: "10" },
-      courseQuiz: {
-        name: "Quiz sur cours",
-        tagline: "Un quiz ciblé sur l'un de tes cours.",
-        cost: "3",
+      exam: {
+        name: "Examen blanc",
+        tagline: "Un quiz long format, noté.",
+        cost: "10",
       },
       smartNotifs: {
         name: "Notifications intelligentes",
-        tagline: "Une banque de rappels personnalisés à tes horaires.",
+        tagline: "Une banque de rappels, à tes horaires.",
         cost: "5",
-      },
-      smartPlan: {
-        name: "Plan intelligent",
-        tagline: "Un planning de révision qui s'adapte à ton avancée.",
-        cost: "inclus",
       },
       customAdventure: {
-        name: "Aventure personnalisée",
-        tagline: "Un mini-monde de 10 niveaux sur le thème que tu choisis.",
+        name: "Mini-monde perso",
+        tagline: "10 niveaux sur le thème que tu veux.",
         cost: "5",
-      },
-    },
-  },
-  progression: {
-    eyebrow: "Une progression qui se voit",
-    title: "Ton niveau, tes vies, ta série. Tout est visible.",
-    stats: {
-      xp: {
-        label: "XP",
-        body: "Tu gagnes de l'XP à chaque niveau réussi. Ton avancée est visible en permanence.",
-      },
-      lives: {
-        label: "Vies",
-        body: "Les vies se régénèrent automatiquement. Revizio Plus en débloque davantage et accélère la régénération.",
-      },
-      streak: {
-        label: "Série",
-        body: "Une session par jour suffit pour entretenir la série.",
       },
     },
   },
   daily: {
     eyebrow: "Tous les jours, ou quand tu veux",
-    title: "Un défi quotidien. Une aventure perso.",
+    title: "Un défi par jour. Une aventure perso à volonté.",
     daily: {
       name: "Défi du jour",
-      body: "Un niveau frais chaque jour. Trois étoiles à décrocher. Les brains gagnés ici ne sont pas plafonnés.",
+      body: "Un niveau frais chaque matin. Trois étoiles à décrocher. Reviens demain pour le suivant.",
     },
     custom: {
-      name: "Mini-aventure perso",
-      body: "Dix niveaux sur le thème que tu choisis. Disponible en Free, à volonté en Plus.",
+      name: "Mini-monde perso",
+      body: "Tu lances un mini-monde de 10 niveaux sur le thème que tu choisis. Comme une playlist, mais pour apprendre.",
     },
   },
   plans: {
     eyebrow: "Deux plans. Pas plus.",
-    title: "Free pour découvrir. Plus pour pousser.",
+    title: "Free pour commencer. Plus pour tout débloquer.",
     free: {
       name: "Free",
       price: "0 €",
       cadence: "pour toujours",
-      promise: "Un vrai tier permanent.",
+      promise: "L'Aventure et tous les jeux IA, sans rien payer.",
       features: [
         "Aventure 180+ niveaux intégrale",
+        "Tous les jeux IA",
         "Défi du jour",
-        "Tous les jeux IA accessibles",
-        "Brains gagnables via le jeu",
-        "Régénération automatique des vies",
-        "Aperçu des outils Premium",
+        "Aperçu des outils IA",
       ],
     },
     plus: {
@@ -147,32 +116,26 @@ export const fr: Dict = {
       cadence: "par mois",
       priceYear: "49,99 €",
       cadenceYear: "par an (−30 %)",
-      promise: "Les outils Premium et une allocation mensuelle de cerveaux.",
-      tag: "Le plus utile",
+      promise: "Plus de cerveaux et tous les outils IA débloqués.",
+      tag: "Tout ton potentiel",
       features: [
-        "200 brains chaque mois, cumulatifs",
-        "Tous les outils Premium",
-        "Plus de vies, régénération accélérée",
-        "Timers Aventure réduits",
-        "Mini-aventure perso à volonté",
+        "200 cerveaux chaque mois",
+        "Tous les outils IA débloqués",
+        "Création de mini-mondes à volonté",
+        "Aucune publicité, aucune limite",
       ],
     },
-    explainer: {
-      title: "Important",
-      body:
-        "L'abonnement donne accès aux outils. Les brains sont une monnaie de consommation pour générer du contenu IA. Les packs de cerveaux disponibles dans l'app rechargent cette consommation — ils ne débloquent jamais l'accès Plus.",
-    },
     fineprint:
-      "Renouvellement automatique géré par l'App Store. Résiliable à tout moment depuis tes réglages Apple. Les achats sont synchronisés via RevenueCat.",
+      "Abonnement géré par l'App Store. Résiliable à tout moment depuis tes réglages Apple.",
   },
   trust: {
     eyebrow: "Sans piège",
     title: "On joue franc-jeu.",
     items: [
-      { title: "Sans publicité", body: "Aucun bandeau, aucune vente de données." },
-      { title: "Sans tracking", body: "Pas de Mixpanel, Amplitude, Firebase. Aucun cookie web." },
-      { title: "Données en Europe", body: "Hébergées chez Supabase, région eu-west-1." },
-      { title: "Sans mot de passe", body: "Connexion par Apple, Google, code email ou invité." },
+      { title: "Sans publicité", body: "Aucun bandeau. Aucune vente de données." },
+      { title: "Sans tracking", body: "Pas d'analytics tierce. Pas de cookie web." },
+      { title: "Tes contenus restent privés", body: "Chaque génération est strictement liée à ton compte." },
+      { title: "Sans mot de passe", body: "Apple, Google, code email ou invité." },
     ],
   },
   faq: {
@@ -185,26 +148,26 @@ export const fr: Dict = {
       },
       {
         q: "Quelle différence entre Free et Plus ?",
-        a: "Free donne accès intégral à l'Aventure et à tous les jeux IA. Plus ajoute une allocation mensuelle de cerveaux cumulatifs, tous les outils Premium, plus de vies, des timers réduits et une mini-aventure perso à volonté.",
+        a: "Free, c'est l'Aventure et tous les jeux IA sans rien payer. Plus, c'est plus de cerveaux chaque mois et tous les outils IA débloqués.",
       },
       {
         q: "Comment restaurer mes achats ?",
-        a: "Ouvre l'app, va dans Réglages puis Restaurer mes achats. Les transactions Apple sont rejouées via RevenueCat.",
+        a: "Ouvre l'app, va dans Réglages → Restaurer mes achats. Tes transactions Apple sont rejouées automatiquement.",
       },
       {
         q: "Comment supprimer mon compte ?",
-        a: "Réglages → Mon compte → Supprimer mon compte. La suppression est atomique. Détails complets sur la page Supprimer mon compte.",
+        a: "Réglages → Mon compte → Supprimer mon compte. La suppression est immédiate. Voir la page Supprimer mon compte pour les détails.",
       },
       {
         q: "Mes contenus IA sont-ils privés ?",
-        a: "Oui. Chaque génération est strictement liée à ton compte. Aucun partage entre utilisateurs, aucune réutilisation commerciale.",
+        a: "Oui. Chaque génération est liée à ton compte. Aucun partage entre utilisateurs.",
       },
     ],
     seeMore: "Toutes les questions →",
   },
   cta: {
     title: "Choisis un sujet. Revizio fabrique le jeu.",
-    body: "Tu peux commencer en mode invité, sans mot de passe, en moins d'une minute.",
+    body: "Commence en mode invité, sans mot de passe, en moins d'une minute.",
     supportLine: (email) => `Une question ? Écris à ${email}.`,
   },
   footer: {
@@ -241,17 +204,17 @@ export const fr: Dict = {
       {
         title: "Progression",
         body:
-          "Avancée dans l'Aventure (niveaux, étoiles, tentatives), expérience et niveau, vies et compteurs, séries (streak).",
+          "Avancée dans l'Aventure, expérience et niveau, vies et compteurs, séries.",
       },
       {
         title: "Contenu créé",
         body:
-          "Cours et chapitres que tu crées toi-même, sessions de travail, contenus générés par les outils IA (fiches, quiz, mémos).",
+          "Cours et chapitres que tu crées toi-même, sessions de travail, contenus générés par les outils IA.",
       },
       {
         title: "Économie",
         body:
-          "Solde de cerveaux, transactions, historique des récompenses (auditables et idempotents).",
+          "Solde de cerveaux, transactions, historique des récompenses.",
       },
       {
         title: "Préférences",
@@ -260,36 +223,37 @@ export const fr: Dict = {
     ],
     dataNotCollectedHeading: "Données que nous ne collectons pas",
     dataNotCollectedItems: [
-      "Aucune analytics tierce (Mixpanel, Amplitude, Firebase Analytics, etc.).",
+      "Aucune analytics tierce.",
       "Aucun cookie web — Revizio est une app native.",
       "Aucun identifiant de tracking publicitaire.",
-      "Aucune adresse IP utilisée à des fins business.",
+      "Aucune IP utilisée à des fins business.",
       "Aucun crash report comportant des données personnelles.",
     ],
     processorsHeading: "Sous-traitants",
     processorsItems: [
       {
-        name: "Supabase",
+        name: "Hébergeur cloud (Europe)",
         purpose:
-          "Base de données, authentification et stockage des médias. Hébergement en Europe (région eu-west-1).",
+          "Stockage de la base de données, authentification et stockage des médias, en région européenne.",
       },
       {
-        name: "OpenAI (via Edge Functions)",
+        name: "Fournisseur de modèles IA",
         purpose:
-          "Génération de contenu pour les jeux et outils IA. Les contenus transmis sont les textes ou photos que tu fournis (cours, thèmes, scans), sans données de profil. La politique de conservation appliquée par OpenAI s'applique alors.",
+          "Génération du contenu des jeux et des outils IA. Seuls les textes ou photos que tu fournis (thèmes, scans) sont transmis, sans données de profil.",
       },
       {
-        name: "RevenueCat",
-        purpose: "Gestion des abonnements et des achats in-app, via un identifiant anonymisé.",
+        name: "Plateforme de gestion d'abonnements",
+        purpose:
+          "Gestion des achats et des entitlements, via un identifiant anonymisé.",
       },
       {
         name: "Apple et Google",
-        purpose: "Authentification et transactions in-app sur leurs plateformes respectives.",
+        purpose: "Authentification et transactions in-app sur leurs plateformes.",
       },
     ],
     storageHeading: "Stockage des médias",
     storageBody:
-      "Les photos que tu envoies aux outils d'analyse (par exemple le Décodeur) sont compressées et stockées dans un bucket privé hébergé en Europe. Elles sont supprimées avec ton compte.",
+      "Les photos que tu envoies aux outils d'analyse (par exemple le Décodeur) sont compressées et stockées dans un espace privé hébergé en Europe. Elles sont supprimées avec ton compte.",
     retentionHeading: "Durée de conservation",
     retentionBody:
       "Tes données sont conservées tant que ton compte existe. Lors de la suppression du compte, toutes les lignes liées à ton identifiant sont supprimées de manière atomique. Les journaux techniques anonymisés peuvent subsister une courte durée.",
@@ -298,13 +262,13 @@ export const fr: Dict = {
       {
         title: "Accès",
         body:
-          "Réglages → Mon compte → Exporter mes données. Tu reçois un export structuré de tes données liées à ton compte.",
+          "Réglages → Mon compte → Exporter mes données. Tu reçois un export structuré de tes données.",
       },
       { title: "Rectification", body: "Modification du profil dans Réglages → Mon compte." },
       {
         title: "Suppression",
         body:
-          "Réglages → Mon compte → Supprimer mon compte. Suppression atomique et immédiate de toutes les données associées.",
+          "Réglages → Mon compte → Supprimer mon compte. Suppression atomique et immédiate.",
       },
       { title: "Portabilité", body: "L'export ci-dessus est portable et lisible." },
       {
@@ -323,7 +287,7 @@ export const fr: Dict = {
       "Revizio ne propose aucune fonctionnalité spécifique aux moins de 13 ans. Pas de chat entre utilisateurs, pas de profil public, aucune mécanique sociale. Pour les jeunes utilisateurs, l'usage du compte familial Apple ou Google est recommandé.",
     securityHeading: "Sécurité",
     securityBody:
-      "Toutes les tables sensibles sont protégées par Row Level Security côté Supabase. Le portefeuille de cerveaux et les transactions ne sont modifiables qu'au travers de fonctions serveur signées. Aucun secret n'est stocké côté app.",
+      "Toutes les tables sensibles sont protégées par Row Level Security. Le portefeuille de cerveaux et les transactions ne sont modifiables qu'au travers de fonctions serveur signées. Aucun secret n'est stocké côté app.",
     contactHeading: "Contact",
     contactBody: (email) =>
       `Pour toute question relative à cette politique ou à la protection de tes données : ${email}.`,
@@ -335,7 +299,7 @@ export const fr: Dict = {
       {
         heading: "1. Service",
         body:
-          "Revizio est une application mobile d'apprentissage par le jeu, distribuée sur iOS (et bientôt Android). Le service comprend une Aventure éditoriale, des jeux IA, un défi du jour, des outils Premium et une gestion de compte.",
+          "Revizio est une application mobile d'apprentissage par le jeu, distribuée sur iOS (et bientôt Android). Le service comprend une Aventure éditoriale, des jeux IA, un défi du jour, des outils IA et une gestion de compte.",
       },
       {
         heading: "2. Comptes",
@@ -345,12 +309,12 @@ export const fr: Dict = {
       {
         heading: "3. Plans",
         body:
-          "Deux plans sont proposés : Free (gratuit et permanent) et Revizio Plus (abonnement mensuel ou annuel). Le plan Free donne accès à l'Aventure et aux jeux IA. Le plan Plus ajoute les outils Premium, une allocation mensuelle de cerveaux cumulatifs et un confort supplémentaire dans le jeu. Les prix en vigueur sont affichés dans l'app au moment de l'achat.",
+          "Deux plans sont proposés : Free (gratuit et permanent) et Revizio Plus (abonnement mensuel ou annuel). Free donne accès à l'Aventure et aux jeux IA. Plus ajoute les outils IA et une allocation mensuelle de cerveaux cumulatifs. Les prix en vigueur sont affichés dans l'app au moment de l'achat.",
       },
       {
         heading: "5. Paiements",
         body:
-          "Tous les achats (abonnements et packs de cerveaux) passent par l'App Store ou Google Play. La gestion des entitlements se fait via RevenueCat. Revizio ne traite jamais directement de moyens de paiement.",
+          "Tous les achats (abonnements et packs de cerveaux) passent par l'App Store ou Google Play. Revizio ne traite jamais directement de moyens de paiement.",
       },
       {
         heading: "6. Renouvellement et résiliation",
@@ -360,7 +324,7 @@ export const fr: Dict = {
       {
         heading: "7. Restauration",
         body:
-          "Réglages → Restaurer mes achats rejoue les transactions reçues côté Apple ou Google via RevenueCat.",
+          "Réglages → Restaurer mes achats rejoue les transactions Apple ou Google associées à ton compte.",
       },
       {
         heading: "8. Remboursements",
@@ -375,17 +339,17 @@ export const fr: Dict = {
       {
         heading: "10. Sessions et récompenses",
         body:
-          "Une session d'apprentissage compte pour une récompense (XP, série, brains) seulement si elle dépasse une durée minimale, indiquée dans l'app.",
+          "Une session d'apprentissage compte pour une récompense seulement si elle dépasse une durée minimale, indiquée dans l'app.",
       },
       {
         heading: "11. Modération",
         body:
-          "Le contenu généré par un utilisateur reste strictement privé à son compte. Aucun partage utilisateur à utilisateur. Les prompts à risque (haine, harcèlement, contenu sexuel, automutilation) sont bloqués par filtre avant traitement.",
+          "Le contenu généré par un utilisateur reste strictement privé à son compte. Aucun partage utilisateur à utilisateur. Les prompts à risque sont bloqués par filtre avant traitement.",
       },
       {
         heading: "12. Responsabilité",
         body:
-          "Revizio fournit le service en l'état. L'éditeur ne saurait être tenu responsable d'une indisponibilité temporaire ou d'un usage non conforme. En cas de bug bloquant, contacte le support.",
+          "Revizio fournit le service en l'état. L'éditeur ne saurait être tenu responsable d'une indisponibilité temporaire ou d'un usage non conforme.",
       },
       {
         heading: "13. Droit applicable",
@@ -395,7 +359,7 @@ export const fr: Dict = {
     ],
     accessVsConsumptionHeading: "4. Accès vs. consommation — important",
     accessVsConsumptionBody:
-      "L'abonnement Plus donne accès aux outils Premium. Les brains (cerveaux) sont une monnaie de consommation qui sert à générer du contenu IA. Les packs de cerveaux disponibles à l'achat dans l'app sont des consommables qui rechargent uniquement cette consommation. Ils ne débloquent jamais l'accès Plus. Cette distinction est centrale et explicite dans toute communication de Revizio.",
+      "L'abonnement Plus donne accès aux outils IA. Les cerveaux sont une monnaie de consommation utilisée pour générer du contenu. Les packs de cerveaux disponibles à l'achat dans l'app rechargent uniquement cette consommation. Ils ne débloquent jamais l'accès Plus.",
     contactHeading: "14. Contact",
     contactBody: (email) => `Pour toute question relative à ces conditions : ${email}.`,
   },
@@ -412,11 +376,11 @@ export const fr: Dict = {
         items: [
           {
             q: "Ma connexion Apple ou Google échoue, que faire ?",
-            a: "Vérifie que tu es bien connecté à ton compte Apple ou Google sur l'appareil. Si l'erreur persiste, désinstalle puis réinstalle l'app. Si rien ne marche, écris-nous.",
+            a: "Vérifie que tu es bien connecté à ton compte sur l'appareil. Si l'erreur persiste, désinstalle puis réinstalle l'app. Si rien ne marche, écris-nous.",
           },
           {
             q: "Mon onboarding est bloqué.",
-            a: "Force la fermeture de l'app et relance. L'état d'onboarding est synchronisé côté serveur, ton avancée n'est pas perdue.",
+            a: "Force la fermeture de l'app et relance. Ton avancée est synchronisée côté serveur.",
           },
           {
             q: "Comment supprimer mes données ?",
@@ -424,7 +388,7 @@ export const fr: Dict = {
           },
           {
             q: "Comment exporter mes données ?",
-            a: "Réglages → Mon compte → Exporter mes données. Tu reçois un export structuré par email.",
+            a: "Réglages → Mon compte → Exporter mes données.",
           },
           {
             q: "J'ai utilisé l'app en mode invité, puis-je récupérer ma progression sur un autre appareil ?",
@@ -437,15 +401,15 @@ export const fr: Dict = {
         items: [
           {
             q: "Comment restaurer mes achats ?",
-            a: "Réglages → Restaurer mes achats. Les transactions Apple ou Google sont rejouées via RevenueCat.",
+            a: "Réglages → Restaurer mes achats. Tes transactions Apple ou Google sont rejouées automatiquement.",
           },
           {
             q: "Mon paiement a été refusé.",
-            a: "Vérifie ton moyen de paiement dans tes réglages Apple ou Google. Revizio ne traite jamais directement les paiements.",
+            a: "Vérifie ton moyen de paiement dans tes réglages Apple ou Google.",
           },
           {
             q: "J'ai acheté Plus, mais il n'est pas actif.",
-            a: "Quitte et relance l'app. Si le problème persiste, lance Restaurer mes achats. Sinon, écris-nous avec ton identifiant utilisateur (Réglages → Mon compte).",
+            a: "Quitte et relance l'app. Si le problème persiste, lance Restaurer mes achats. Sinon, écris-nous avec ton identifiant utilisateur.",
           },
         ],
       },
@@ -454,19 +418,19 @@ export const fr: Dict = {
         items: [
           {
             q: "Je n'ai pas reçu les brains promis.",
-            a: "Vérifie que la session dépasse la durée minimale indiquée dans l'app. Si tu remplis la condition et que le crédit est manquant, écris-nous.",
+            a: "Vérifie que la session dépasse la durée minimale indiquée dans l'app. Si le crédit est manquant, écris-nous.",
           },
           {
             q: "Mes vies sont à 0 et ne régénèrent pas.",
-            a: "Les vies régénèrent par paliers automatiques. Tu peux aussi en racheter pour quelques brains.",
+            a: "Les vies régénèrent par paliers automatiques. Tu peux aussi en racheter pour quelques cerveaux.",
           },
           {
             q: "Mon streak s'est cassé alors que j'ai joué.",
-            a: "Une session compte pour le streak si elle dépasse la durée minimale. Si tu remplis cette condition et que le streak n'est pas comptabilisé, contacte-nous avec l'horodatage.",
+            a: "Une session compte pour le streak si elle dépasse la durée minimale indiquée. Sinon contacte-nous avec l'horodatage.",
           },
           {
             q: "Un outil IA ne génère pas.",
-            a: "Si la génération échoue, les brains sont remboursés automatiquement. Si ce n'est pas le cas, écris-nous.",
+            a: "Si la génération échoue, les cerveaux sont remboursés automatiquement. Si ce n'est pas le cas, écris-nous.",
           },
         ],
       },
@@ -479,7 +443,7 @@ export const fr: Dict = {
           },
           {
             q: "Où sont stockées mes données ?",
-            a: "Chez Supabase, en Europe (région eu-west-1).",
+            a: "Sur un hébergeur cloud, en Europe.",
           },
         ],
       },
@@ -502,9 +466,9 @@ export const fr: Dict = {
       `Si tu ne peux pas accéder à l'app, écris à ${email} depuis l'adresse de ton compte. Joins ton identifiant utilisateur (visible dans Réglages → Mon compte si tu y as encore accès). Nous traitons la demande sous 30 jours.`,
     deletedHeading: "Ce qui est supprimé",
     deletedItems: [
-      "Toutes les données de base liées à ton identifiant (profil, progression, cours, sessions, contenus IA, portefeuille, transactions, récompenses)",
-      "Toutes les photos envoyées aux outils d'analyse (stockage Supabase)",
-      "Annulation côté RevenueCat (les abonnements actifs sont marqués annulés)",
+      "Toutes les données liées à ton identifiant (profil, progression, cours, sessions, contenus IA, portefeuille, transactions, récompenses)",
+      "Toutes les photos envoyées aux outils d'analyse",
+      "Annulation côté plateforme de gestion d'abonnements",
     ],
     retainedHeading: "Ce qui peut subsister",
     retainedItems: [

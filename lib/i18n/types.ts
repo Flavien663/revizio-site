@@ -14,9 +14,7 @@ export type ToolKey =
   | "decoder"
   | "memo"
   | "exam"
-  | "courseQuiz"
   | "smartNotifs"
-  | "smartPlan"
   | "customAdventure";
 
 export type WorldKey = "culture" | "words" | "logic";
@@ -51,24 +49,14 @@ export type Dict = {
     intro: string;
     levelsLabel: string;
     freeBadge: string;
-    starsCaption: string;
-    chestsCaption: string;
-    bossCaption: string;
-    moreSoon: string;
     worlds: Record<WorldKey, { name: string; tagline: string }>;
   };
   tools: {
     eyebrow: string;
     title: string;
     intro: string;
-    includedLabel: string;
     brainsLabel: (n: number) => string;
     items: Record<ToolKey, { name: string; tagline: string; cost: string }>;
-  };
-  progression: {
-    eyebrow: string;
-    title: string;
-    stats: Record<"xp" | "lives" | "streak", { label: string; body: string }>;
   };
   daily: {
     eyebrow: string;
@@ -90,7 +78,6 @@ export type Dict = {
       features: string[];
       tag: string;
     };
-    explainer: { title: string; body: string };
     fineprint: string;
   };
   trust: {
