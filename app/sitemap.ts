@@ -1,56 +1,32 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 
+const paths = ["", "/privacy", "/terms", "/support", "/delete-account"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return [
-    {
-      url: `${site.url}/`,
+  const entries: MetadataRoute.Sitemap = [];
+
+  for (const p of paths) {
+    const frUrl = `${site.url}${p || "/"}`;
+    const enUrl = `${site.url}/en${p}`;
+    const languages = { "fr-FR": frUrl, "en-US": enUrl };
+
+    entries.push({
+      url: frUrl,
       lastModified,
-      changeFrequency: "weekly",
-      priority: 1.0,
-    },
-    {
-      url: `${site.url}/outils`,
+      changeFrequency: p === "" ? "weekly" : "monthly",
+      priority: p === "" ? 1.0 : 0.6,
+      alternates: { languages },
+    });
+    entries.push({
+      url: enUrl,
       lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${site.url}/subscriptions`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${site.url}/faq`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${site.url}/support`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${site.url}/privacy`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-    {
-      url: `${site.url}/terms`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-    {
-      url: `${site.url}/delete-account`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.4,
-    },
-  ];
+      changeFrequency: p === "" ? "weekly" : "monthly",
+      priority: p === "" ? 0.9 : 0.5,
+      alternates: { languages },
+    });
+  }
+
+  return entries;
 }

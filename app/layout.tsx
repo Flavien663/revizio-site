@@ -1,16 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Inter } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
+const geistSans = Inter({ subsets: ["latin"], variable: "--font-geist-sans" });
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s · ${site.name}`,
-  },
+  title: { default: `${site.name} — ${site.tagline}`, template: `%s · ${site.name}` },
   description: site.description,
   applicationName: site.name,
   generator: "Next.js",
@@ -22,9 +20,7 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   alternates: {
     canonical: "/",
-    languages: {
-      "fr-FR": "/",
-    },
+    languages: { "fr-FR": "/", "en-US": "/en" },
   },
   openGraph: {
     type: "website",
@@ -49,10 +45,8 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   icons: {
-    icon: [
-      { url: "/images/mascot-hello.webp", type: "image/webp" },
-    ],
-    apple: "/images/mascot-hello.webp",
+    icon: [{ url: "/images/logo-revizio.webp", type: "image/webp" }],
+    apple: "/images/logo-revizio.webp",
   },
   robots: {
     index: true,
@@ -65,15 +59,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#EEF4F8",
+  themeColor: "#FBFAF7",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -86,7 +76,7 @@ const organizationLd = {
   name: site.legalEntity,
   legalName: site.legalEntity,
   url: site.url,
-  logo: `${site.url}/favicon.svg`,
+  logo: `${site.url}/images/logo-revizio.webp`,
   email: site.supportEmail,
   address: {
     "@type": "PostalAddress",
@@ -99,7 +89,7 @@ const organizationLd = {
       "@type": "ContactPoint",
       email: site.supportEmail,
       contactType: "customer support",
-      availableLanguage: ["French"],
+      availableLanguage: ["French", "English"],
     },
   ],
 };
@@ -109,20 +99,15 @@ const websiteLd = {
   "@type": "WebSite",
   name: site.name,
   url: site.url,
-  inLanguage: site.language,
-  publisher: {
-    "@type": "Organization",
-    name: site.legalEntity,
-  },
+  inLanguage: ["fr", "en"],
+  publisher: { "@type": "Organization", name: site.legalEntity },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" dir="ltr">
-      <body className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="fr" dir="ltr" className={geistSans.variable}>
+      <body className="min-h-screen flex flex-col bg-background text-text-body antialiased">
+        {children}
         <Script
           id="ld-organization"
           type="application/ld+json"

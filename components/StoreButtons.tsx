@@ -1,15 +1,35 @@
 import { site } from "@/lib/site";
+import type { Lang } from "@/lib/i18n";
 
 type Props = {
   size?: "md" | "lg";
   layout?: "row" | "stack";
   variant?: "dark" | "light";
+  lang?: Lang;
+};
+
+const labels = {
+  fr: {
+    downloadOn: "Télécharger sur",
+    appStore: "App Store",
+    androidSoon: "Android — bientôt",
+    soonBadge: "Bientôt",
+    playStore: "Google Play",
+  },
+  en: {
+    downloadOn: "Download on",
+    appStore: "App Store",
+    androidSoon: "Android — soon",
+    soonBadge: "Soon",
+    playStore: "Google Play",
+  },
 };
 
 export function StoreButtons({
   size = "md",
   layout = "row",
   variant = "dark",
+  lang = "fr",
 }: Props) {
   const isLg = size === "lg";
   const dimensions = isLg ? "px-6 py-3.5" : "px-5 py-3";
@@ -18,13 +38,15 @@ export function StoreButtons({
 
   const primary =
     variant === "dark"
-      ? "bg-ink text-white hover:bg-[#1c3657]"
+      ? "bg-ink text-white hover:bg-[#1a1d24]"
       : "bg-white text-ink border border-line hover:border-accent";
 
   const playSoonBase =
     variant === "dark"
       ? "bg-white/70 text-ink/70 border border-line"
       : "bg-ink/5 text-ink/70 border border-line";
+
+  const L = labels[lang];
 
   return (
     <div
@@ -36,7 +58,7 @@ export function StoreButtons({
         href={site.appStoreUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Télécharger Revizio sur l’App Store"
+        aria-label={`${L.downloadOn} ${L.appStore}`}
         className={`${base} ${dimensions} ${primary}`}
       >
         <svg
@@ -49,35 +71,47 @@ export function StoreButtons({
         </svg>
         <span className="flex flex-col items-start leading-tight">
           <span className="text-[10px] uppercase tracking-wider opacity-70">
-            Télécharger sur
+            {L.downloadOn}
           </span>
           <span className={`${isLg ? "text-base" : "text-sm"} font-semibold`}>
-            App Store
+            {L.appStore}
           </span>
         </span>
       </a>
 
       <div
         role="note"
-        aria-label="Application Android bientôt disponible"
+        aria-label={L.androidSoon}
         className={`${base} ${dimensions} ${playSoonBase} relative cursor-default select-none`}
       >
         <svg viewBox="0 0 24 24" className="h-6 w-6 shrink-0 opacity-60" aria-hidden>
-          <path d="M3.6 2.3c-.4.3-.6.8-.6 1.5v16.4c0 .7.2 1.2.6 1.5l9.1-9.7L3.6 2.3Z" fill="#34A853" />
-          <path d="m17.2 12.9 2.9-1.7c.9-.5.9-1.4 0-1.9l-2.9-1.7-3.2 3.4 3.2 3.3Z" fill="#FBBC04" />
-          <path d="M12.7 12 3.6 21.7c.4.4 1 .4 1.7 0l11-6.4-3.6-3.3Z" fill="#EA4335" />
-          <path d="M12.7 12 16.3 8.7l-11-6.4c-.7-.4-1.3-.4-1.7 0L12.7 12Z" fill="#4285F4" />
+          <path
+            d="M3.6 2.3c-.4.3-.6.8-.6 1.5v16.4c0 .7.2 1.2.6 1.5l9.1-9.7L3.6 2.3Z"
+            fill="#34A853"
+          />
+          <path
+            d="m17.2 12.9 2.9-1.7c.9-.5.9-1.4 0-1.9l-2.9-1.7-3.2 3.4 3.2 3.3Z"
+            fill="#FBBC04"
+          />
+          <path
+            d="M12.7 12 3.6 21.7c.4.4 1 .4 1.7 0l11-6.4-3.6-3.3Z"
+            fill="#EA4335"
+          />
+          <path
+            d="M12.7 12 16.3 8.7l-11-6.4c-.7-.4-1.3-.4-1.7 0L12.7 12Z"
+            fill="#4285F4"
+          />
         </svg>
         <span className="flex flex-col items-start leading-tight">
           <span className="text-[10px] uppercase tracking-wider opacity-70">
-            Android — bientôt
+            {L.androidSoon}
           </span>
           <span className={`${isLg ? "text-base" : "text-sm"} font-semibold`}>
-            Google Play
+            {L.playStore}
           </span>
         </span>
         <span className="ml-1 inline-flex items-center rounded-full bg-accent-soft px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent-deep">
-          Bientôt
+          {L.soonBadge}
         </span>
       </div>
     </div>

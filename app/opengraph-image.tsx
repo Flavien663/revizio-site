@@ -18,8 +18,8 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           padding: "72px",
           background:
-            "radial-gradient(ellipse at 20% 0%, rgba(77,141,255,0.28), transparent 55%), linear-gradient(180deg, #EEF4F8 0%, #E4EEF4 100%)",
-          color: "#102033",
+            "radial-gradient(ellipse at 20% 0%, rgba(242,107,58,0.28), transparent 55%), linear-gradient(180deg, #FBFAF7 0%, #FFE6D9 100%)",
+          color: "#0F1115",
           fontFamily: "sans-serif",
         }}
       >
@@ -29,15 +29,23 @@ export default function OpengraphImage() {
               width: "56px",
               height: "56px",
               borderRadius: "16px",
-              background: "#326BDE",
+              background: "#F26B3A",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "white",
+              fontWeight: 800,
+              fontSize: "32px",
             }}
-          />
+          >
+            R
+          </div>
           <div
             style={{
               fontSize: "40px",
               fontWeight: 700,
               letterSpacing: "-0.02em",
-              color: "#102033",
+              color: "#0F1115",
             }}
           >
             {site.name}
@@ -51,15 +59,15 @@ export default function OpengraphImage() {
               fontWeight: 700,
               lineHeight: 1.02,
               letterSpacing: "-0.03em",
-              color: "#102033",
+              color: "#0F1115",
               maxWidth: "1000px",
             }}
           >
-            Comprends. Teste-toi.{" "}
-            <span style={{ color: "#326BDE" }}>Retiens.</span>
+            Apprends ce que tu veux.{" "}
+            <span style={{ color: "#D95426" }}>En jouant.</span>
           </div>
-          <div style={{ fontSize: "30px", color: "#667487", maxWidth: "900px" }}>
-            Un sujet, une fiche, un quiz ou un examen. En quelques secondes.
+          <div style={{ fontSize: "30px", color: "#5B6472", maxWidth: "900px" }}>
+            8+ jeux IA · 180+ niveaux d'aventure · sur iOS
           </div>
         </div>
 
@@ -69,14 +77,14 @@ export default function OpengraphImage() {
             alignItems: "center",
             justifyContent: "space-between",
             fontSize: "22px",
-            color: "#667487",
+            color: "#5B6472",
           }}
         >
           <div style={{ display: "flex", gap: "22px" }}>
             <span>iOS</span>
-            <span style={{ color: "#C5D0DD" }}>·</span>
+            <span style={{ color: "#C5C5C5" }}>·</span>
             <span>Android — bientôt</span>
-            <span style={{ color: "#C5D0DD" }}>·</span>
+            <span style={{ color: "#C5C5C5" }}>·</span>
             <span>Sans publicité</span>
           </div>
           <div style={{ fontWeight: 600 }}>{site.domain}</div>

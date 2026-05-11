@@ -1,44 +1,59 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/lib/site";
+import { getDict, type Lang } from "@/lib/i18n";
 
-const navItems = [
-  { href: "/outils", label: "Outils" },
-  { href: "/subscriptions", label: "Offres" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/support", label: "Support" },
-];
+type Props = { lang: Lang };
 
-export function Header() {
+export function Header({ lang }: Props) {
+  const t = getDict(lang);
+  const prefix = lang === "en" ? "/en" : "";
+
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line/70 bg-background/85 backdrop-blur-md">
       <div className="container-x flex h-16 items-center justify-between">
         <Link
-          href="/"
-          className="text-lg font-semibold tracking-tight text-ink"
-          aria-label={`${site.name} — Accueil`}
+          href={prefix || "/"}
+          className="flex items-center gap-2 text-base font-semibold tracking-tight text-ink"
+          aria-label={`${site.name} — ${t.footer.home}`}
         >
+          <Image
+            src="/images/logo-revizio.webp"
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-lg object-contain"
+          />
           {site.name}
         </Link>
         <nav className="hidden items-center gap-7 text-sm md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-text-muted hover:text-ink"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
           <Link
-            href="/#download"
-            className="btn-primary !px-4 !py-2"
-            aria-label="Télécharger l’application Revizio"
+            href={`${prefix}/#games`}
+            className="text-text-muted hover:text-ink"
           >
-            Télécharger
+            {t.nav.games}
           </Link>
-        </div>
+          <Link
+            href={`${prefix}/#adventure`}
+            className="text-text-muted hover:text-ink"
+          >
+            {t.nav.adventure}
+          </Link>
+          <Link
+            href={`${prefix}/#plans`}
+            className="text-text-muted hover:text-ink"
+          >
+            {t.nav.plans}
+          </Link>
+        </nav>
+        <a
+          href={site.appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-primary !px-4 !py-2"
+        >
+          {t.nav.download}
+        </a>
       </div>
     </header>
   );

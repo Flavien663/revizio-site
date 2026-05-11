@@ -3,21 +3,21 @@ import { SiteShell } from "@/components/SiteShell";
 import { TermsBody } from "@/components/legal/TermsBody";
 import { getDict } from "@/lib/i18n";
 
-const t = getDict("fr");
+const t = getDict("en");
 
 export const metadata: Metadata = {
   title: t.meta.termsTitle,
   description: t.terms.intro,
   alternates: {
-    canonical: "/terms",
+    canonical: "/en/terms",
     languages: { "fr-FR": "/terms", "en-US": "/en/terms" },
   },
 };
 
-export default function TermsPage() {
+export default function TermsPageEn() {
   return (
-    <SiteShell lang="fr">
-      <TermsBody lang="fr" />
+    <SiteShell lang="en">
+      <TermsBody lang="en" />
     </SiteShell>
   );
 }

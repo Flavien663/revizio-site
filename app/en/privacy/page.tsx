@@ -3,21 +3,21 @@ import { SiteShell } from "@/components/SiteShell";
 import { PrivacyBody } from "@/components/legal/PrivacyBody";
 import { getDict } from "@/lib/i18n";
 
-const t = getDict("fr");
+const t = getDict("en");
 
 export const metadata: Metadata = {
   title: t.meta.privacyTitle,
   description: t.privacy.intro,
   alternates: {
-    canonical: "/privacy",
+    canonical: "/en/privacy",
     languages: { "fr-FR": "/privacy", "en-US": "/en/privacy" },
   },
 };
 
-export default function PrivacyPage() {
+export default function PrivacyPageEn() {
   return (
-    <SiteShell lang="fr">
-      <PrivacyBody lang="fr" />
+    <SiteShell lang="en">
+      <PrivacyBody lang="en" />
     </SiteShell>
   );
 }

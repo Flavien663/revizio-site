@@ -4,116 +4,50 @@ const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       colors: {
-        ink: "#102033",
+        background: "#FBFAF7",
+        "background-strong": "#F5F4EF",
+        ink: "#0F1115",
         text: {
-          DEFAULT: "#1D2B3A",
-          primary: "#102033",
-          body: "#1D2B3A",
-          muted: "#667487",
-          secondary: "#667487",
+          DEFAULT: "#1F2733",
+          primary: "#0F1115",
+          body: "#1F2733",
+          muted: "#5B6472",
+          secondary: "#5B6472",
         },
-        line: "#E5EBF2",
-        surface: {
-          DEFAULT: "#FFFFFF",
-          soft: "#F5F8FC",
+        line: "#E7E5DF",
+        surface: { DEFAULT: "#FFFFFF", soft: "#F5F4EF" },
+        accent: { DEFAULT: "#F26B3A", deep: "#D95426", soft: "#FFE6D9" },
+        gold: { DEFAULT: "#D4A24C", soft: "#FAEED4" },
+        success: { DEFAULT: "#22C55E", soft: "#DCFCE7" },
+        warning: { DEFAULT: "#F59E0B", soft: "#FEF3C7" },
+        danger: { DEFAULT: "#EF4444", soft: "#FEE2E2" },
+        // Game palettes
+        quiz: { tint: "#EEF2FF", tintStrong: "#E0E7FF", DEFAULT: "#4F46E5", deep: "#3730A3" },
+        hangman: { tint: "#F5F3FF", tintStrong: "#EDE9FE", DEFAULT: "#7C3AED", deep: "#5B21B6" },
+        bingo: { tint: "#FDF2F8", tintStrong: "#FCE7F3", DEFAULT: "#E11D7A", deep: "#9D174D" },
+        crossword: { tint: "#FFFBEB", tintStrong: "#FEF3C7", DEFAULT: "#D97706", deep: "#92400E" },
+        "true-false": {
+          tint: "#FEF2F2",
+          tintStrong: "#FEE2E2",
+          DEFAULT: "#DC2626",
+          deep: "#991B1B",
         },
-        background: "#EEF4F8",
-        "background-strong": "#E4EEF4",
-        accent: {
-          DEFAULT: "#4D8DFF",
-          deep: "#326BDE",
-          soft: "#E7F0FF",
-        },
-        gold: {
-          DEFAULT: "#D4A24C",
-          soft: "#FAEED4",
-        },
-        success: {
-          DEFAULT: "#24A57A",
-          soft: "#E2F7EF",
-        },
-        warning: {
-          DEFAULT: "#F1A64A",
-          soft: "#FFF1DE",
-        },
-        danger: {
-          DEFAULT: "#D96D6A",
-          soft: "#FCE9E7",
-        },
-        lavender: "#A684FF",
-        sky: "#6BAAD9",
-        mint: "#5AB7A0",
-        // Per-tool palettes (mirror app/expo theme — see doc/website-revamp/app-design-tokens.md)
-        hangman: {
-          tint: "#FEF3E6",
-          tintStrong: "#FED7AA",
-          DEFAULT: "#F97316",
-          deep: "#C2410C",
-          ink: "#7C2D12",
-        },
-        crossword: {
-          tint: "#E0F2FE",
-          tintStrong: "#BAE6FD",
-          DEFAULT: "#0284C7",
-          deep: "#075985",
-          ink: "#0C4A6E",
-        },
-        bingo: {
-          tint: "#ECFDF5",
-          tintStrong: "#A7F3D0",
-          DEFAULT: "#059669",
-          deep: "#065F46",
-          ink: "#064E3B",
-        },
-        memovisuel: {
-          tint: "#F5F3FF",
-          tintStrong: "#DDD6FE",
-          DEFAULT: "#7C3AED",
-          deep: "#5B21B6",
-          ink: "#2E1065",
-        },
-        memostruct: {
-          tint: "#FFE4E6",
-          tintStrong: "#FECDD3",
-          DEFAULT: "#BE123C",
-          deep: "#881337",
-          ink: "#4C0519",
-        },
-        quiz: {
-          tint: "#E0F2FE",
-          tintStrong: "#BAE6FD",
-          DEFAULT: "#0284C7",
-          deep: "#075985",
-          ink: "#0C4A6E",
-        },
-        exam: {
-          tint: "#F0FDFA",
-          tintStrong: "#99F6E4",
-          DEFAULT: "#115E59",
-          deep: "#134E4A",
-          ink: "#042F2E",
-        },
-        notifs: {
-          tint: "#DBEAFE",
-          tintStrong: "#BFDBFE",
-          DEFAULT: "#1E3A8A",
-          deep: "#172554",
-          ink: "#172554",
-        },
-        // legacy aliases (backward safety)
-        primary: {
-          DEFAULT: "#326BDE",
-          dark: "#1F4FB8",
-        },
-        border: "#E5EBF2",
+        tri: { tint: "#F0FDFA", tintStrong: "#CCFBF1", DEFAULT: "#0D9488", deep: "#115E59" },
+        chrono: { tint: "#FFF7ED", tintStrong: "#FFEDD5", DEFAULT: "#C2410C", deep: "#7C2D12" },
+        memo: { tint: "#ECFDF5", tintStrong: "#D1FAE5", DEFAULT: "#059669", deep: "#065F46" },
+        // World palettes
+        culture: { tint: "#ECFEFF", DEFAULT: "#0891B2", deep: "#155E75" },
+        words: { tint: "#ECFDF5", DEFAULT: "#10B981", deep: "#065F46" },
+        logic: { tint: "#EEF2FF", DEFAULT: "#4338CA", deep: "#312E81" },
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "var(--font-geist-sans)",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -122,27 +56,22 @@ const config: Config = {
           "sans-serif",
         ],
       },
-      borderRadius: {
-        lg: "14px",
-        xl: "18px",
-        "2xl": "22px",
-        "3xl": "28px",
-      },
+      borderRadius: { lg: "14px", xl: "18px", "2xl": "22px", "3xl": "28px" },
       boxShadow: {
-        card: "0 18px 40px -24px rgba(16, 32, 51, 0.18), 0 2px 8px -4px rgba(16, 32, 51, 0.06)",
-        soft: "0 8px 24px -12px rgba(16, 32, 51, 0.12)",
-        glow: "0 0 0 6px rgba(77, 141, 255, 0.12)",
+        card:
+          "0 18px 40px -24px rgba(15, 17, 21, 0.18), 0 2px 8px -4px rgba(15, 17, 21, 0.06)",
+        soft: "0 8px 24px -12px rgba(15, 17, 21, 0.12)",
       },
-      maxWidth: {
-        container: "1200px",
-        prose: "72ch",
-      },
-      backgroundImage: {
-        "grid-soft":
-          "radial-gradient(circle at 1px 1px, rgba(16,32,51,0.06) 1px, transparent 0)",
-      },
+      maxWidth: { container: "1200px", prose: "72ch" },
     },
   },
+  safelist: [
+    {
+      pattern:
+        /(bg|text|ring|border)-(quiz|hangman|bingo|crossword|true-false|tri|chrono|memo|culture|words|logic)(-tint|-tintStrong|-deep)?/,
+      variants: ["hover", "group-hover"],
+    },
+  ],
   plugins: [],
 };
 
