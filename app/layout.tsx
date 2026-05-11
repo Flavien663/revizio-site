@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   icons: {
-    icon: [{ url: "/images/logo-revizio.webp", type: "image/webp" }],
-    apple: "/images/logo-revizio.webp",
+    icon: [{ url: "/images/mascot-hero.webp", type: "image/webp" }],
+    apple: "/images/mascot-hero.webp",
   },
   robots: {
     index: true,
