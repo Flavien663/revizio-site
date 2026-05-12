@@ -118,14 +118,20 @@ export type Dict = {
     intro: string;
     controllerHeading: string;
     controllerBody: string;
+    scopeHeading: string;
+    scopeBody: string;
     dataCollectedHeading: string;
     dataCollectedItems: Array<{ title: string; body: string }>;
     dataNotCollectedHeading: string;
     dataNotCollectedItems: string[];
+    purposesHeading: string;
+    purposesItems: Array<{ title: string; body: string }>;
     processorsHeading: string;
     processorsItems: Array<{ name: string; purpose: string }>;
     storageHeading: string;
     storageBody: string;
+    transfersHeading: string;
+    transfersBody: string;
     retentionHeading: string;
     retentionBody: string;
     rightsHeading: string;
@@ -134,14 +140,14 @@ export type Dict = {
     minorsBody: string;
     securityHeading: string;
     securityBody: string;
+    changesHeading: string;
+    changesBody: string;
     contactHeading: string;
     contactBody: (email: string) => string;
   };
   terms: {
     intro: string;
-    sections: Array<{ heading: string; body: string }>;
-    accessVsConsumptionHeading: string;
-    accessVsConsumptionBody: string;
+    sections: Array<{ heading: string; body: string; highlight?: boolean }>;
     contactHeading: string;
     contactBody: (email: string) => string;
   };

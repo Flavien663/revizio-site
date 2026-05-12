@@ -26,6 +26,9 @@ export function PrivacyBody({ lang }: { lang: Lang }) {
         <h2>{t.privacy.controllerHeading}</h2>
         <p>{t.privacy.controllerBody}</p>
 
+        <h2>{t.privacy.scopeHeading}</h2>
+        <p>{t.privacy.scopeBody}</p>
+
         <h2>{t.privacy.dataCollectedHeading}</h2>
         <ul>
           {t.privacy.dataCollectedItems.map((it) => (
@@ -42,6 +45,15 @@ export function PrivacyBody({ lang }: { lang: Lang }) {
           ))}
         </ul>
 
+        <h2>{t.privacy.purposesHeading}</h2>
+        <ul>
+          {t.privacy.purposesItems.map((it) => (
+            <li key={it.title}>
+              <strong>{it.title} —</strong> {it.body}
+            </li>
+          ))}
+        </ul>
+
         <h2>{t.privacy.processorsHeading}</h2>
         <ul>
           {t.privacy.processorsItems.map((it) => (
@@ -53,6 +65,9 @@ export function PrivacyBody({ lang }: { lang: Lang }) {
 
         <h2>{t.privacy.storageHeading}</h2>
         <p>{t.privacy.storageBody}</p>
+
+        <h2>{t.privacy.transfersHeading}</h2>
+        <p>{t.privacy.transfersBody}</p>
 
         <h2>{t.privacy.retentionHeading}</h2>
         <p>{t.privacy.retentionBody}</p>
@@ -71,6 +86,9 @@ export function PrivacyBody({ lang }: { lang: Lang }) {
 
         <h2>{t.privacy.securityHeading}</h2>
         <p>{t.privacy.securityBody}</p>
+
+        <h2>{t.privacy.changesHeading}</h2>
+        <p>{t.privacy.changesBody}</p>
 
         <h2>{t.privacy.contactHeading}</h2>
         <p>{t.privacy.contactBody(site.privacyEmail)}</p>

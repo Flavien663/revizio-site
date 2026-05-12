@@ -6,17 +6,6 @@ export function TermsBody({ lang }: { lang: Lang }) {
   const t = getDict(lang);
   const prefix = lang === "en" ? "/en" : "";
 
-  // Inject the access-vs-consumption section in slot 4 (after section 3 "Plans")
-  const sections: Array<{ heading: string; body: string; highlight: boolean }> = [
-    ...t.terms.sections.slice(0, 3).map((s) => ({ ...s, highlight: false })),
-    {
-      heading: t.terms.accessVsConsumptionHeading,
-      body: t.terms.accessVsConsumptionBody,
-      highlight: true,
-    },
-    ...t.terms.sections.slice(3).map((s) => ({ ...s, highlight: false })),
-  ];
-
   return (
     <article className="container-x py-16 sm:py-24">
       <div className="mx-auto max-w-prose prose-legal">
@@ -34,7 +23,7 @@ export function TermsBody({ lang }: { lang: Lang }) {
         </p>
         <p className="mt-8">{t.terms.intro}</p>
 
-        {sections.map((s) => (
+        {t.terms.sections.map((s) => (
           <section key={s.heading}>
             <h2>{s.heading}</h2>
             {s.highlight ? <blockquote>{s.body}</blockquote> : <p>{s.body}</p>}
